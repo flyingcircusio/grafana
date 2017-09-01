@@ -14,10 +14,11 @@
       "type": "dashboards"
     }
   ],
+  "refresh": false,
   "rows": [
     {
       "collapse": false,
-      "height": 108,
+      "height": "100",
       "panels": [
         {
           "cacheTimeout": null,
@@ -28,7 +29,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": null,
+          "datasource": "Prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -37,6 +38,7 @@
             "thresholdLabels": false,
             "thresholdMarkers": true
           },
+          "hideTimeOverride": true,
           "id": 14,
           "interval": null,
           "links": [],
@@ -74,14 +76,54 @@
           },
           "targets": [
             {
-              "expr": "system_n_cpus{host=\"$Host\"}",
+              "dsType": "influxdb",
+              "expr": "avg(system_n_cpus{host=\"$Host\"})",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
               "intervalFactor": 2,
+              "measurement": "system_n_cpus",
               "metric": "system_n_cpus",
+              "policy": "autogen",
               "refId": "A",
-              "step": 600
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "last"
+                  }
+                ]
+              ],
+              "step": 60,
+              "tags": [
+                {
+                  "key": "host",
+                  "operator": "=~",
+                  "value": "/^$Host$/"
+                }
+              ]
             }
           ],
           "thresholds": "",
+          "timeFrom": "1h",
           "title": "CPUs",
           "type": "singlestat",
           "valueFontSize": "80%",
@@ -92,7 +134,7 @@
               "value": "null"
             }
           ],
-          "valueName": "avg"
+          "valueName": "current"
         },
         {
           "cacheTimeout": null,
@@ -113,6 +155,7 @@
             "thresholdLabels": false,
             "thresholdMarkers": true
           },
+          "hideTimeOverride": true,
           "id": 15,
           "interval": null,
           "links": [],
@@ -150,15 +193,16 @@
           },
           "targets": [
             {
-              "expr": "mem_total{host=\"$Host\"}",
+              "expr": "avg(mem_total{host=\"$Host\"})",
               "intervalFactor": 2,
               "legendFormat": "",
               "metric": "mem_",
               "refId": "A",
-              "step": 600
+              "step": 4
             }
           ],
           "thresholds": "",
+          "timeFrom": "5m",
           "title": "RAM",
           "type": "singlestat",
           "valueFontSize": "80%",
@@ -189,6 +233,7 @@
             "thresholdLabels": false,
             "thresholdMarkers": true
           },
+          "hideTimeOverride": true,
           "id": 16,
           "interval": null,
           "links": [],
@@ -226,15 +271,16 @@
           },
           "targets": [
             {
-              "expr": "disk_total{host=\"$Host\", path=\"/\"}",
+              "expr": "avg(disk_total{host=\"$Host\", path=\"/\"})",
               "intervalFactor": 2,
               "legendFormat": "",
               "metric": "disk_total",
               "refId": "A",
-              "step": 600
+              "step": 4
             }
           ],
           "thresholds": "",
+          "timeFrom": "5m",
           "title": "Disk",
           "type": "singlestat",
           "valueFontSize": "80%",
@@ -245,7 +291,7 @@
               "value": "null"
             }
           ],
-          "valueName": "avg"
+          "valueName": "current"
         },
         {
           "cacheTimeout": null,
@@ -265,6 +311,7 @@
             "thresholdLabels": false,
             "thresholdMarkers": true
           },
+          "hideTimeOverride": true,
           "id": 18,
           "interval": null,
           "links": [],
@@ -302,15 +349,16 @@
           },
           "targets": [
             {
-              "expr": "disk_free{host=\"$Host\", path=\"/\"}",
+              "expr": "avg(disk_free{host=\"$Host\", path=\"/\"})",
               "intervalFactor": 2,
               "legendFormat": "",
               "metric": "disk_total",
               "refId": "A",
-              "step": 600
+              "step": 4
             }
           ],
           "thresholds": "",
+          "timeFrom": "5m",
           "title": "Disk free",
           "type": "singlestat",
           "valueFontSize": "80%",
@@ -321,7 +369,7 @@
               "value": "null"
             }
           ],
-          "valueName": "avg"
+          "valueName": "current"
         },
         {
           "cacheTimeout": null,
@@ -342,7 +390,7 @@
             "thresholdLabels": false,
             "thresholdMarkers": true
           },
-          "hideTimeOverride": false,
+          "hideTimeOverride": true,
           "id": 12,
           "interval": null,
           "links": [],
@@ -380,16 +428,16 @@
           },
           "targets": [
             {
-              "expr": "system_uptime{host=\"$Host\"}",
+              "expr": "max(system_uptime{host=\"$Host\"})",
               "intervalFactor": 2,
               "legendFormat": "",
               "metric": "system_uptime",
               "refId": "A",
-              "step": 2
+              "step": 4
             }
           ],
           "thresholds": "",
-          "timeFrom": "1m",
+          "timeFrom": "5m",
           "title": "Uptime",
           "type": "singlestat",
           "valueFontSize": "80%",
@@ -420,6 +468,7 @@
             "thresholdLabels": false,
             "thresholdMarkers": true
           },
+          "hideTimeOverride": true,
           "id": 17,
           "interval": null,
           "links": [],
@@ -457,14 +506,15 @@
           },
           "targets": [
             {
-              "expr": "processes_total{host=\"$Host\"}",
+              "expr": "avg(processes_total{host=\"$Host\"})",
               "intervalFactor": 2,
               "metric": "processes_total",
               "refId": "A",
-              "step": 600
+              "step": 4
             }
           ],
           "thresholds": "",
+          "timeFrom": "5m",
           "title": "Processes",
           "type": "singlestat",
           "valueFontSize": "80%",
@@ -481,8 +531,8 @@
       "repeat": null,
       "repeatIteration": null,
       "repeatRowId": null,
-      "showTitle": false,
-      "title": "Dashboard Row",
+      "showTitle": true,
+      "title": "Current Values",
       "titleSize": "h6"
     },
     {
@@ -531,42 +581,50 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "cpu_usage_iowait{cpu=\"cpu-total\", host=\"$Host\"}",
+              "expr": "avg(cpu_usage_iowait{cpu=\"cpu-total\", host=\"$Host\"})",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "IOWait",
               "metric": "cpu_usage",
               "refId": "C",
-              "step": 120
+              "step": 240
             },
             {
-              "expr": "cpu_usage_system{cpu=\"cpu-total\",host=\"$Host\"}",
+              "expr": "avg(cpu_usage_system{cpu=\"cpu-total\",host=\"$Host\"})",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "System",
               "metric": "cpu_usage_nice",
               "refId": "E",
-              "step": 120
+              "step": 240
             },
             {
-              "expr": "cpu_usage_user{cpu=\"cpu-total\", host=\"$Host\"}",
+              "expr": "avg(cpu_usage_user{cpu=\"cpu-total\", host=\"$Host\"})",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "User",
               "metric": "cpu_usage_user",
               "refId": "A",
-              "step": 120
+              "step": 240
             },
             {
-              "expr": "cpu_usage_idle{cpu=\"cpu-total\",host=\"$Host\"}",
+              "expr": "avg(cpu_usage_idle{cpu=\"cpu-total\",host=\"$Host\"})",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "Idle",
               "metric": "cpu_usage_idle",
               "refId": "B",
-              "step": 120
+              "step": 240
+            },
+            {
+              "expr": "avg(cpu_usage_steal{cpu=\"cpu-total\",host=\"$Host\"})",
+              "intervalFactor": 2,
+              "legendFormat": "Steal",
+              "metric": "cpu_usage_steal",
+              "refId": "D",
+              "step": 240
             }
           ],
           "thresholds": [],
@@ -639,46 +697,46 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "system_load1{host=\"$Host\"}",
+              "expr": "avg(system_load1{host=\"$Host\"})",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "1",
               "metric": "system_load1",
               "refId": "A",
-              "step": 120
+              "step": 240
             },
             {
-              "expr": "system_load5{host=\"$Host\"}",
+              "expr": "avg(system_load5{host=\"$Host\"})",
               "intervalFactor": 2,
               "legendFormat": "5",
               "metric": "system_load1",
               "refId": "B",
-              "step": 120
+              "step": 240
             },
             {
-              "expr": "system_load15{host=\"$Host\"}",
+              "expr": "avg(system_load15{host=\"$Host\"})",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "15",
               "metric": "system_load1",
               "refId": "C",
-              "step": 120
+              "step": 240
             },
             {
-              "expr": "processes_total{host=\"$Host\"}",
+              "expr": "avg(processes_total{host=\"$Host\"})",
               "intervalFactor": 2,
               "legendFormat": "Processes total",
               "metric": "processes_total",
               "refId": "D",
-              "step": 120
+              "step": 240
             },
             {
-              "expr": "processes_running{host=\"$Host\"}",
+              "expr": "avg(processes_running{host=\"$Host\"})",
               "intervalFactor": 2,
               "legendFormat": "Processes running",
               "metric": "processes_running",
               "refId": "E",
-              "step": 120
+              "step": 240
             }
           ],
           "thresholds": [],
@@ -759,38 +817,38 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "mem_used{host=\"$Host\"}",
+              "expr": "avg(mem_used{host=\"$Host\"})",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "Used",
               "metric": "mem_used",
               "refId": "A",
-              "step": 120
+              "step": 240
             },
             {
-              "expr": "mem_cached{host=\"$Host\"}",
+              "expr": "avg(mem_cached{host=\"$Host\"})",
               "intervalFactor": 2,
               "legendFormat": "Cached",
               "metric": "mem_used",
               "refId": "B",
-              "step": 120
+              "step": 240
             },
             {
-              "expr": "mem_buffered{host=\"$Host\"}",
+              "expr": "avg(mem_buffered{host=\"$Host\"})",
               "intervalFactor": 2,
               "legendFormat": "Buffered",
               "metric": "mem_used",
               "refId": "C",
-              "step": 120
+              "step": 240
             },
             {
-              "expr": "mem_free{host=\"$Host\"}",
+              "expr": "avg(mem_free{host=\"$Host\"})",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "Free",
               "metric": "mem_used",
               "refId": "D",
-              "step": 120
+              "step": 240
             }
           ],
           "thresholds": [],
@@ -857,21 +915,21 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "swap_used{host=\"$Host\"}",
+              "expr": "avg(swap_used{host=\"$Host\"})",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "Used",
               "metric": "swap_used",
               "refId": "A",
-              "step": 120
+              "step": 240
             },
             {
-              "expr": "swap_free{host=\"$Host\"}",
+              "expr": "avg(swap_free{host=\"$Host\"})",
               "intervalFactor": 2,
               "legendFormat": "Free",
               "metric": "swap_used",
               "refId": "B",
-              "step": 120
+              "step": 240
             }
           ],
           "thresholds": [],
@@ -945,7 +1003,12 @@
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
-          "seriesOverrides": [],
+          "seriesOverrides": [
+            {
+              "alias": "Write",
+              "transform": "negative-Y"
+            }
+          ],
           "span": 6,
           "stack": false,
           "steppedLine": false,
@@ -957,7 +1020,7 @@
               "legendFormat": "Read",
               "metric": "diskio",
               "refId": "A",
-              "step": 120
+              "step": 240
             },
             {
               "expr": "sum(rate(diskio_writes{host=\"$Host\", name!~\".*[0-9]$\"}[1m]))",
@@ -966,7 +1029,7 @@
               "legendFormat": "Write",
               "metric": "diskio",
               "refId": "B",
-              "step": 120
+              "step": 240
             }
           ],
           "thresholds": [
@@ -1051,21 +1114,21 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(kernel_context_switches{host=\"$Host\"}[5m])",
+              "expr": "avg(rate(kernel_context_switches{host=\"$Host\"}[5m]))",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "Context switches",
               "metric": "kernel_context_switches",
               "refId": "A",
-              "step": 120
+              "step": 240
             },
             {
-              "expr": "rate(kernel_processes_forked{host=\"$Host\"}[5m])",
+              "expr": "avg(rate(kernel_processes_forked{host=\"$Host\"}[5m]))",
               "intervalFactor": 2,
               "legendFormat": "Process Forks",
               "metric": "kernel_processes_forked",
               "refId": "B",
-              "step": 120
+              "step": 240
             }
           ],
           "thresholds": [],
@@ -1113,7 +1176,7 @@
     },
     {
       "collapse": false,
-      "height": 250,
+      "height": "400",
       "panels": [
         {
           "aliasColors": {},
@@ -1122,13 +1185,15 @@
           "fill": 1,
           "id": 8,
           "legend": {
-            "avg": false,
+            "alignAsTable": true,
+            "avg": true,
             "current": false,
-            "max": false,
+            "max": true,
             "min": false,
+            "rightSide": false,
             "show": true,
             "total": false,
-            "values": false
+            "values": true
           },
           "lines": true,
           "linewidth": 1,
@@ -1138,25 +1203,37 @@
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
-          "seriesOverrides": [],
+          "seriesOverrides": [
+            {
+              "alias": "/^Write/",
+              "transform": "negative-Y"
+            }
+          ],
           "span": 6,
           "stack": false,
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(diskio_read_bytes{host=\"$Host\", name!~\".+[0-9]+\"}[1m])",
+              "expr": "avg(rate(diskio_read_bytes{host=\"$Host\", name!~\".+[0-9]+\"}[1m])) by (name)",
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "{{name}}",
+              "legendFormat": "Read {{name}}",
               "metric": "diskio_read_bytes",
               "refId": "A",
-              "step": 120
+              "step": 240
+            },
+            {
+              "expr": "avg(rate(diskio_write_bytes{host=\"$Host\", name!~\".+[0-9]+\"}[1m])) by (name)",
+              "intervalFactor": 2,
+              "legendFormat": "Write {{name}}",
+              "refId": "B",
+              "step": 240
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Disk Read",
+          "title": "Disk R/W",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -1195,10 +1272,12 @@
           "fill": 1,
           "id": 10,
           "legend": {
+            "alignAsTable": true,
             "avg": true,
             "current": false,
             "max": true,
             "min": false,
+            "rightSide": false,
             "show": true,
             "total": false,
             "values": true
@@ -1211,32 +1290,37 @@
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
-          "seriesOverrides": [],
+          "seriesOverrides": [
+            {
+              "alias": "/^TX/",
+              "transform": "negative-Y"
+            }
+          ],
           "span": 6,
           "stack": false,
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(net_bytes_recv{host=\"$Host\", interface=\"ethsrv\"}[1m])",
+              "expr": "avg(rate(net_bytes_recv{host=\"$Host\"}[1m])) by (interface)",
               "intervalFactor": 2,
-              "legendFormat": "RX",
+              "legendFormat": "RX {{interface}}",
               "metric": "net_bytes_",
               "refId": "A",
-              "step": 120
+              "step": 240
             },
             {
-              "expr": "rate(net_bytes_sent{host=\"$Host\", interface=\"ethsrv\"}[1m])",
+              "expr": "avg(rate(net_bytes_sent{host=\"$Host\"}[1m])) by (interface)",
               "intervalFactor": 2,
-              "legendFormat": "TX",
+              "legendFormat": "TX {{interface}}",
               "metric": "net_bytes_",
               "refId": "B",
-              "step": 120
+              "step": 240
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
-          "title": "ethsrv",
+          "title": "Network",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -1252,171 +1336,6 @@
           "yaxes": [
             {
               "format": "bytes",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ]
-        }
-      ],
-      "repeat": null,
-      "repeatIteration": null,
-      "repeatRowId": null,
-      "showTitle": false,
-      "title": "Dashboard Row",
-      "titleSize": "h6"
-    },
-    {
-      "collapse": false,
-      "height": 250,
-      "panels": [
-        {
-          "aliasColors": {},
-          "bars": false,
-          "datasource": null,
-          "fill": 1,
-          "id": 9,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "span": 6,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "rate(diskio_write_bytes{host=\"$Host\", name!~\".+[0-9]+\"}[1m])",
-              "interval": "",
-              "intervalFactor": 2,
-              "legendFormat": "{{name}}",
-              "metric": "diskio_read_bytes",
-              "refId": "A",
-              "step": 120
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Disk Write",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "bytes",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ]
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "datasource": null,
-          "fill": 1,
-          "id": 11,
-          "legend": {
-            "avg": true,
-            "current": false,
-            "max": true,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "span": 6,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "rate(net_bytes_recv{host=\"$Host\", interface=\"ethfe\"}[1m])",
-              "intervalFactor": 2,
-              "legendFormat": "RX",
-              "metric": "net_bytes_",
-              "refId": "A",
-              "step": 120
-            },
-            {
-              "expr": "rate(net_bytes_sent{host=\"$Host\", interface=\"ethfe\"}[1m])",
-              "intervalFactor": 2,
-              "legendFormat": "TX",
-              "metric": "net_bytes_",
-              "refId": "B",
-              "step": 120
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "ethfe",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
               "label": null,
               "logBase": 1,
               "max": null,
@@ -1474,21 +1393,21 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "disk_used{host=\"$Host\", path=\"/\"}",
+              "expr": "avg(disk_used{host=\"$Host\", path=\"/\"})",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "Used",
               "metric": "disk",
               "refId": "B",
-              "step": 120
+              "step": 240
             },
             {
-              "expr": "disk_free{host=\"$Host\", path=\"/\"}",
+              "expr": "avg(disk_free{host=\"$Host\", path=\"/\"})",
               "intervalFactor": 2,
               "legendFormat": "Free",
               "metric": "disk_free",
               "refId": "A",
-              "step": 120
+              "step": 240
             }
           ],
           "thresholds": [],
@@ -1555,21 +1474,21 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "disk_used{host=\"$Host\", path=\"/tmp\"}",
+              "expr": "avg(disk_used{host=\"$Host\", path=\"/tmp\"})",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "Used",
               "metric": "disk",
               "refId": "B",
-              "step": 120
+              "step": 240
             },
             {
-              "expr": "disk_free{host=\"$Host\", path=\"/tmp\"}",
+              "expr": "avg(disk_free{host=\"$Host\", path=\"/tmp\"})",
               "intervalFactor": 2,
               "legendFormat": "Free",
               "metric": "disk_free",
               "refId": "A",
-              "step": 120
+              "step": 240
             }
           ],
           "thresholds": [],
@@ -1614,6 +1533,17 @@
       "showTitle": false,
       "title": "Dashboard Row",
       "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": 250,
+      "panels": [],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
     }
   ],
   "schemaVersion": 14,
@@ -1626,8 +1556,9 @@
       {
         "allValue": null,
         "current": {
-          "text": "blackbee05",
-          "value": "blackbee05"
+          "tags": [],
+          "text": "",
+          "value": ""
         },
         "datasource": "Prometheus",
         "hide": 0,
@@ -1649,7 +1580,7 @@
     ]
   },
   "time": {
-    "from": "now/d",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {
@@ -1679,5 +1610,5 @@
   },
   "timezone": "browser",
   "title": "VM Status",
-  "version": 35
+  "version": 52
 }
