@@ -1948,7 +1948,7 @@
   ],
   "schemaVersion": 14,
   "style": "dark",
-  "tags": [],
+  "tags": ["fcio"],
   "templating": {
     "list": [
       {
