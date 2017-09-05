@@ -879,10 +879,6 @@
           "points": false,
           "renderer": "flot",
           "seriesOverrides": [
-            {
-              "alias": "Backend",
-              "transform": "negative-Y"
-            }
           ],
           "span": 6,
           "stack": false,
