@@ -973,7 +973,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(varnish_cache_hit{host=\"$Host\"}[5m])",
+              "expr": "avg(rate(varnish_cache_hit{host=\"$Host\"}[5m]))",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
@@ -983,7 +983,7 @@
               "step": 20
             },
             {
-              "expr": "rate(varnish_cache_miss{host=\"$Host\"}[5m])",
+              "expr": "avg(rate(varnish_cache_miss{host=\"$Host\"}[5m]))",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
@@ -993,7 +993,7 @@
               "step": 20
             },
             {
-              "expr": "rate(varnish_cache_hitpass{host=\"$Host\"}[5m])",
+              "expr": "avg(rate(varnish_cache_hitpass{host=\"$Host\"}[5m]))",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
@@ -1003,19 +1003,20 @@
               "step": 20
             },
             {
-              "expr": "varnish_cache_hit{host=\"$Host\"} / (varnish_cache_hit{host=\"$Host\"} +  varnish_cache_miss{host=\"$Host\"})",
+              "expr": "avg(rate(varnish_bans{host=\"$Host\"}[5m]))",
+              "intervalFactor": 2,
+              "legendFormat": "Bans",
+              "metric": "varnish_bans",
+              "refId": "E",
+              "step": 20
+            },
+            {
+              "expr": "avg(varnish_cache_hit{host=\"$Host\"} / (varnish_cache_hit{host=\"$Host\"} +  varnish_cache_miss{host=\"$Host\"}))",
               "intervalFactor": 2,
               "legendFormat": "Hit Ratio",
               "metric": "varnish_cache_hit",
               "refId": "D",
               "step": 20
-            },
-            {
-              "expr": "",
-              "intervalFactor": 2,
-              "legendFormat": "",
-              "refId": "E",
-              "step": 10
             }
           ],
           "thresholds": [],
@@ -1038,7 +1039,7 @@
             {
               "format": "short",
               "label": null,
-              "logBase": 1,
+              "logBase": 10,
               "max": null,
               "min": "0",
               "show": true
@@ -1968,15 +1969,15 @@
         "auto_count": 30,
         "auto_min": "10s",
         "current": {
-          "text": "5m",
-          "value": "5m"
+          "text": "auto",
+          "value": "$__auto_interval"
         },
         "hide": 0,
         "label": null,
         "name": "Interval",
         "options": [
           {
-            "selected": false,
+            "selected": true,
             "text": "auto",
             "value": "$__auto_interval"
           },
@@ -1986,7 +1987,7 @@
             "value": "30s"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "5m",
             "value": "5m"
           },
