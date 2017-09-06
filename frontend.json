@@ -878,8 +878,7 @@
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
-          "seriesOverrides": [
-          ],
+          "seriesOverrides": [],
           "span": 6,
           "stack": false,
           "steppedLine": false,
@@ -1187,7 +1186,7 @@
               "alias": "/.*Error.*/"
             }
           ],
-          "span": 9,
+          "span": 6,
           "stack": false,
           "steppedLine": false,
           "targets": [
@@ -1196,16 +1195,16 @@
               "intervalFactor": 2,
               "legendFormat": "{{ frontend }}",
               "refId": "C",
-              "step": 4
+              "step": 10
             },
             {
               "expr": "deriv(haproxy_backend_connections_total{host=\"$Host\", backend!~\".*-in$\"}[$Interval])",
-              "interval": "$Interval",
-              "intervalFactor": 1,
+              "interval": "",
+              "intervalFactor": 2,
               "legendFormat": "{{ backend }}",
               "metric": "",
               "refId": "A",
-              "step": 300
+              "step": 10
             },
             {
               "expr": "deriv(haproxy_backend_connection_errors_total{host=\"$Host\",backend!~\".*-in$\"}[$Interval])",
@@ -1213,7 +1212,7 @@
               "intervalFactor": 2,
               "legendFormat": "{{ backend }} Error",
               "refId": "B",
-              "step": 4
+              "step": 10
             }
           ],
           "thresholds": [],
@@ -1255,70 +1254,57 @@
           "aliasColors": {},
           "bars": false,
           "datasource": "Prometheus",
-          "decimals": 0,
-          "fill": 7,
-          "id": 24,
+          "description": "",
+          "editable": true,
+          "error": false,
+          "fill": 2,
+          "grid": {},
+          "id": 28,
           "legend": {
             "alignAsTable": true,
             "avg": true,
             "current": true,
             "max": true,
             "min": true,
-            "rightSide": false,
+            "rightSide": true,
             "show": true,
             "total": false,
             "values": true
           },
           "lines": true,
-          "linewidth": 3,
+          "linewidth": 1,
           "links": [],
-          "nullPointMode": "null",
+          "minSpan": 6,
+          "nullPointMode": "connected",
           "percentage": false,
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
-          "seriesOverrides": [
-            {
-              "alias": "Backends Down",
-              "color": "#890F02"
-            },
-            {
-              "alias": "Backends Down",
-              "transform": "negative-Y"
-            }
-          ],
-          "span": 3,
+          "seriesOverrides": [],
+          "span": 6,
           "stack": false,
           "steppedLine": false,
           "targets": [
             {
-              "expr": "count(haproxy_backend_up{host=\"$Host\"} == 1)",
-              "hide": false,
+              "expr": "avg(haproxy_server_current_sessions{host=\"$Host\"}) by (backend, server)",
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "Backends Up",
+              "legendFormat": "{{ backend }} / {{ server }}",
+              "metric": "haproxy_backend_current_queue",
               "refId": "A",
-              "step": 20
-            },
-            {
-              "expr": "count_scalar(haproxy_backend_up{host=\"$Host\"} == 0)",
-              "interval": "",
-              "intervalFactor": 2,
-              "legendFormat": "Backends Down",
-              "refId": "B",
-              "step": 20
+              "step": 10
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Backends Up / Down",
+          "title": "Server - Current number of active sessions",
           "tooltip": {
-            "shared": true,
+            "msResolution": true,
+            "shared": false,
             "sort": 0,
             "value_type": "individual"
           },
-          "transparent": false,
           "type": "graph",
           "xaxis": {
             "mode": "time",
@@ -1332,7 +1318,7 @@
               "label": null,
               "logBase": 1,
               "max": null,
-              "min": null,
+              "min": 0,
               "show": true
             },
             {
@@ -1340,7 +1326,7 @@
               "label": null,
               "logBase": 1,
               "max": null,
-              "min": null,
+              "min": 0,
               "show": false
             }
           ]
@@ -1948,7 +1934,9 @@
   ],
   "schemaVersion": 14,
   "style": "dark",
-  "tags": ["fcio"],
+  "tags": [
+    "fcio"
+  ],
   "templating": {
     "list": [
       {
