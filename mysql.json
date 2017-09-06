@@ -8,7 +8,7 @@
   "hideControls": true,
   "id": 5,
   "links": [],
-  "refresh": false,
+  "refresh": "10s",
   "rows": [
     {
       "collapse": false,
@@ -161,7 +161,7 @@
               "legendFormat": "",
               "metric": "",
               "refId": "A",
-              "step": 10
+              "step": 20
             }
           ],
           "thresholds": "35,75",
@@ -388,38 +388,40 @@
               "calculatedInterval": "2m",
               "datasourceErrors": {},
               "errors": {},
-              "expr": "avg(max_over_time(mysql_threads_connected{instance=\"$host\"}[$interval]))",
+              "expr": "avg(mysql_threads_connected{instance=\"$host\"})",
               "interval": "$interval",
               "intervalFactor": 1,
-              "legendFormat": "Connections",
+              "legendFormat": "Connected",
               "metric": "connected",
               "refId": "A",
-              "step": 10
+              "step": 20
             },
             {
               "calculatedInterval": "2m",
               "datasourceErrors": {},
               "errors": {},
               "expr": "avg(mysql_max_used_connections{instance=\"$host\"})",
+              "hide": false,
               "interval": "$interval",
               "intervalFactor": 1,
               "legendFormat": "Max Used Connections",
               "metric": "",
               "refId": "C",
-              "step": 10,
+              "step": 20,
               "target": ""
             },
             {
               "calculatedInterval": "2m",
               "datasourceErrors": {},
               "errors": {},
-              "expr": "avg(mysql_max_used_connections{instance=\"$host\"})",
+              "expr": "avg(rate(mysql_connections{instance=\"$host\"}[$interval]))",
+              "hide": false,
               "interval": "$interval",
               "intervalFactor": 1,
               "legendFormat": "Max Connections",
               "metric": "connections",
               "refId": "B",
-              "step": 10,
+              "step": 20,
               "target": ""
             }
           ],
@@ -515,7 +517,7 @@
               "legendFormat": "Threads Connected",
               "metric": "",
               "refId": "A",
-              "step": 10
+              "step": 20
             },
             {
               "calculatedInterval": "2m",
@@ -527,7 +529,7 @@
               "legendFormat": "Threads Running",
               "metric": "",
               "refId": "B",
-              "step": 10
+              "step": 20
             }
           ],
           "thresholds": [],
@@ -624,7 +626,7 @@
               "legendFormat": "Questions",
               "metric": "",
               "refId": "A",
-              "step": 10
+              "step": 20
             }
           ],
           "thresholds": [],
@@ -712,7 +714,7 @@
               "legendFormat": "Thread Cache Size",
               "metric": "cache",
               "refId": "B",
-              "step": 10
+              "step": 20
             },
             {
               "calculatedInterval": "2m",
@@ -724,7 +726,7 @@
               "legendFormat": "Threads Cached",
               "metric": "",
               "refId": "C",
-              "step": 10
+              "step": 20
             },
             {
               "calculatedInterval": "2m",
@@ -736,7 +738,7 @@
               "legendFormat": "Threads Created",
               "metric": "",
               "refId": "A",
-              "step": 10
+              "step": 20
             }
           ],
           "thresholds": [],
@@ -831,7 +833,7 @@
               "legendFormat": "Created Tmp Tables",
               "metric": "",
               "refId": "A",
-              "step": 10
+              "step": 20
             },
             {
               "calculatedInterval": "2m",
@@ -843,7 +845,7 @@
               "legendFormat": "Created Tmp Disk Tables",
               "metric": "",
               "refId": "B",
-              "step": 10
+              "step": 20
             },
             {
               "calculatedInterval": "2m",
@@ -855,7 +857,7 @@
               "legendFormat": "Created Tmp Files",
               "metric": "",
               "refId": "C",
-              "step": 10
+              "step": 20
             }
           ],
           "thresholds": [],
@@ -940,7 +942,7 @@
               "legendFormat": "Select Full Join",
               "metric": "",
               "refId": "A",
-              "step": 10
+              "step": 20
             },
             {
               "calculatedInterval": "2m",
@@ -952,7 +954,7 @@
               "legendFormat": "Select Full Range Join",
               "metric": "",
               "refId": "B",
-              "step": 10
+              "step": 20
             },
             {
               "calculatedInterval": "2m",
@@ -964,7 +966,7 @@
               "legendFormat": "Select Range",
               "metric": "",
               "refId": "C",
-              "step": 10
+              "step": 20
             },
             {
               "calculatedInterval": "2m",
@@ -976,7 +978,7 @@
               "legendFormat": "Select Range Check",
               "metric": "",
               "refId": "D",
-              "step": 10
+              "step": 20
             },
             {
               "calculatedInterval": "2m",
@@ -988,7 +990,7 @@
               "legendFormat": "Select Scan",
               "metric": "",
               "refId": "E",
-              "step": 10
+              "step": 20
             }
           ],
           "thresholds": [],
@@ -1084,7 +1086,7 @@
               "legendFormat": "Sort Rows",
               "metric": "",
               "refId": "A",
-              "step": 10
+              "step": 20
             },
             {
               "calculatedInterval": "2m",
@@ -1096,7 +1098,7 @@
               "legendFormat": "Sort Range",
               "metric": "",
               "refId": "B",
-              "step": 10
+              "step": 20
             },
             {
               "calculatedInterval": "2m",
@@ -1108,7 +1110,7 @@
               "legendFormat": "Sort Merge Passes",
               "metric": "",
               "refId": "C",
-              "step": 10
+              "step": 20
             },
             {
               "calculatedInterval": "2m",
@@ -1120,7 +1122,7 @@
               "legendFormat": "Sort Scan",
               "metric": "",
               "refId": "D",
-              "step": 10
+              "step": 20
             }
           ],
           "thresholds": [],
@@ -1200,7 +1202,7 @@
               "legendFormat": "Slow Queries",
               "metric": "",
               "refId": "A",
-              "step": 10
+              "step": 20
             }
           ],
           "thresholds": [],
@@ -1296,7 +1298,7 @@
               "legendFormat": "Aborted Connects (attempts)",
               "metric": "",
               "refId": "A",
-              "step": 10
+              "step": 20
             },
             {
               "calculatedInterval": "2m",
@@ -1308,7 +1310,7 @@
               "legendFormat": "Aborted Clients (timeout)",
               "metric": "",
               "refId": "B",
-              "step": 10,
+              "step": 20,
               "target": ""
             }
           ],
@@ -1394,7 +1396,7 @@
               "legendFormat": "Table Locks Immediate",
               "metric": "",
               "refId": "A",
-              "step": 10
+              "step": 20
             },
             {
               "calculatedInterval": "2m",
@@ -1406,7 +1408,7 @@
               "legendFormat": "Table Locks Waited",
               "metric": "",
               "refId": "B",
-              "step": 10
+              "step": 20
             }
           ],
           "thresholds": [],
@@ -1501,7 +1503,7 @@
               "legendFormat": "Inbound",
               "metric": "",
               "refId": "A",
-              "step": 10
+              "step": 20
             },
             {
               "calculatedInterval": "2m",
@@ -1513,7 +1515,7 @@
               "legendFormat": "Outbound",
               "metric": "",
               "refId": "B",
-              "step": 10
+              "step": 20
             }
           ],
           "thresholds": [],
@@ -1707,7 +1709,7 @@
               "intervalFactor": 2,
               "legendFormat": "System Memory",
               "refId": "G",
-              "step": 2
+              "step": 4
             },
             {
               "expr": "avg(mysql_innodb_page_size{instance=\"$host\"} * on (instance) mysql_buffer_pool_pages{instance=\"$host\",state=\"data\"})",
@@ -1716,7 +1718,7 @@
               "intervalFactor": 1,
               "legendFormat": "InnoDB Buffer Pool Data",
               "refId": "A",
-              "step": 10
+              "step": 20
             },
             {
               "expr": "avg(mysql_global_variables_innodb_log_buffer_size{instance=\"$host\"})",
@@ -1724,7 +1726,7 @@
               "intervalFactor": 1,
               "legendFormat": "InnoDB Log Buffer Size",
               "refId": "D",
-              "step": 10
+              "step": 20
             },
             {
               "expr": "avg(mysql_global_variables_innodb_additional_mem_pool_size{instance=\"$host\"})",
@@ -1732,7 +1734,7 @@
               "intervalFactor": 2,
               "legendFormat": "InnoDB Additional Memory Pool Size",
               "refId": "H",
-              "step": 20
+              "step": 40
             },
             {
               "expr": "avg(mysql_innodb_mem_dictionary{instance=\"$host\"})",
@@ -1740,7 +1742,7 @@
               "intervalFactor": 1,
               "legendFormat": "InnoDB Dictionary Size",
               "refId": "F",
-              "step": 10
+              "step": 20
             },
             {
               "expr": "avg(mysql_global_variables_key_buffer_size{instance=\"$host\"})",
@@ -1748,7 +1750,7 @@
               "intervalFactor": 1,
               "legendFormat": "Key Buffer Size",
               "refId": "B",
-              "step": 10
+              "step": 20
             },
             {
               "expr": "avg(mysql_global_variables_query_cache_size{instance=\"$host\"})",
@@ -1756,7 +1758,7 @@
               "intervalFactor": 1,
               "legendFormat": "Query Cache Size",
               "refId": "C",
-              "step": 10
+              "step": 20
             },
             {
               "expr": "avg(mysql_innodb_mem_adaptive_hash{instance=\"$host\"})",
@@ -1764,7 +1766,7 @@
               "intervalFactor": 1,
               "legendFormat": "Adaptive Hash Index Size",
               "refId": "E",
-              "step": 10
+              "step": 20
             },
             {
               "expr": "avg(mysql_global_variables_tokudb_cache_size{instance=\"$host\"})",
@@ -1772,7 +1774,7 @@
               "intervalFactor": 1,
               "legendFormat": "TokuDB Cache Size",
               "refId": "I",
-              "step": 10
+              "step": 20
             }
           ],
           "thresholds": [],
@@ -1865,14 +1867,14 @@
               "calculatedInterval": "2m",
               "datasourceErrors": {},
               "errors": {},
-              "expr": "avg(topk(5, rate(mysql_commands_total{instance=\"$host\"}[$interval])>0) or topk(5, irate(mysql_commands_total{instance=\"$host\"}[5m])>0))",
+              "expr": "avg(topk(5, rate(mysql_commands_total{instance=\"$host\"}[$interval])>0) or topk(5, irate(mysql_commands_total{instance=\"$host\"}[5m])>0)) by (command)",
               "hide": false,
               "interval": "$interval",
               "intervalFactor": 1,
               "legendFormat": "Com_{{ command }}",
               "metric": "",
               "refId": "B",
-              "step": 10
+              "step": 20
             }
           ],
           "thresholds": [],
@@ -1949,7 +1951,7 @@
               "calculatedInterval": "2m",
               "datasourceErrors": {},
               "errors": {},
-              "expr": "avg(topk(5, increase(mysql_commands_total{instance=\"$host\"}[1h])>0))",
+              "expr": "avg(topk(5, increase(mysql_commands_total{instance=\"$host\"}[1h])>0)) by (command)",
               "interval": "1h",
               "intervalFactor": 1,
               "legendFormat": "Com_{{ command }}",
@@ -2039,7 +2041,7 @@
               "legendFormat": "{{ handler }}",
               "metric": "mysql_handl",
               "refId": "J",
-              "step": 10
+              "step": 20
             }
           ],
           "thresholds": [],
@@ -2123,7 +2125,7 @@
               "legendFormat": "{{ handler }}",
               "metric": "",
               "refId": "A",
-              "step": 10
+              "step": 20
             }
           ],
           "thresholds": [],
@@ -2203,7 +2205,12 @@
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
-          "seriesOverrides": [],
+          "seriesOverrides": [
+            {
+              "alias": "Queries in cache",
+              "yaxis": 2
+            }
+          ],
           "span": 6,
           "stack": false,
           "steppedLine": false,
@@ -2218,7 +2225,7 @@
               "legendFormat": "Free Memory",
               "metric": "",
               "refId": "F",
-              "step": 10
+              "step": 20
             },
             {
               "calculatedInterval": "2m",
@@ -2228,9 +2235,17 @@
               "interval": "$interval",
               "intervalFactor": 1,
               "legendFormat": "Query Cache Size",
-              "metric": "",
+              "metric": "cache_size",
               "refId": "E",
-              "step": 10
+              "step": 20
+            },
+            {
+              "expr": "avg(mysql_qcache_queries_in_cache{instance=\"$host\"})",
+              "interval": "$interval",
+              "intervalFactor": 2,
+              "legendFormat": "Queries in cache",
+              "refId": "A",
+              "step": 40
             }
           ],
           "thresholds": [],
@@ -2274,7 +2289,7 @@
           "decimals": 2,
           "editable": true,
           "error": false,
-          "fill": 2,
+          "fill": 0,
           "grid": {},
           "height": "",
           "id": 45,
@@ -2299,7 +2314,13 @@
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
-          "seriesOverrides": [],
+          "seriesOverrides": [
+            {
+              "alias": "Queries in Cache",
+              "fill": 0,
+              "yaxis": 2
+            }
+          ],
           "span": 6,
           "stack": false,
           "steppedLine": false,
@@ -2314,7 +2335,7 @@
               "legendFormat": "Hits",
               "metric": "",
               "refId": "B",
-              "step": 10
+              "step": 20
             },
             {
               "calculatedInterval": "2m",
@@ -2326,7 +2347,7 @@
               "legendFormat": "Inserts",
               "metric": "",
               "refId": "C",
-              "step": 10
+              "step": 20
             },
             {
               "calculatedInterval": "2m",
@@ -2338,7 +2359,7 @@
               "legendFormat": "Not Cached",
               "metric": "",
               "refId": "D",
-              "step": 10
+              "step": 20
             },
             {
               "calculatedInterval": "2m",
@@ -2350,19 +2371,7 @@
               "legendFormat": "Prunes",
               "metric": "",
               "refId": "F",
-              "step": 10
-            },
-            {
-              "calculatedInterval": "2m",
-              "datasourceErrors": {},
-              "errors": {},
-              "expr": "avg(mysql_qcache_queries_in_cache{instance=\"$host\"})",
-              "interval": "$interval",
-              "intervalFactor": 1,
-              "legendFormat": "Queries in Cache",
-              "metric": "",
-              "refId": "E",
-              "step": 10
+              "step": 20
             }
           ],
           "thresholds": [],
@@ -2384,8 +2393,8 @@
           },
           "yaxes": [
             {
-              "format": "short",
-              "logBase": 1,
+              "format": "ops",
+              "logBase": 10,
               "max": null,
               "min": 0,
               "show": true
@@ -2455,7 +2464,7 @@
               "legendFormat": "Openings",
               "metric": "",
               "refId": "A",
-              "step": 10
+              "step": 20
             }
           ],
           "thresholds": [],
@@ -2537,7 +2546,7 @@
               "legendFormat": "Open Files",
               "metric": "",
               "refId": "A",
-              "step": 10
+              "step": 20
             },
             {
               "calculatedInterval": "2m",
@@ -2549,7 +2558,7 @@
               "legendFormat": "Open Files Limit",
               "metric": "",
               "refId": "D",
-              "step": 10
+              "step": 20
             },
             {
               "expr": "avg(mysql_innodb_num_open_files{instance=\"$host\"})",
@@ -2557,7 +2566,7 @@
               "intervalFactor": 1,
               "legendFormat": "InnoDB Open Files",
               "refId": "B",
-              "step": 10
+              "step": 20
             }
           ],
           "thresholds": [],
@@ -2657,7 +2666,7 @@
               "legendFormat": "Openings",
               "metric": "",
               "refId": "A",
-              "step": 10
+              "step": 20
             },
             {
               "expr": "avg(rate(mysql_table_open_cache_hits{instance=\"$host\"}[$interval]) or irate(mysql_table_open_cache_hits{instance=\"$host\"}[5m]))",
@@ -2665,7 +2674,7 @@
               "intervalFactor": 1,
               "legendFormat": "Hits",
               "refId": "B",
-              "step": 10
+              "step": 20
             },
             {
               "expr": "avg(rate(mysql_table_open_cache_misses{instance=\"$host\"}[$interval]) or irate(mysql_table_open_cache_misses{instance=\"$host\"}[5m]))",
@@ -2673,7 +2682,7 @@
               "intervalFactor": 1,
               "legendFormat": "Misses",
               "refId": "C",
-              "step": 10
+              "step": 20
             },
             {
               "expr": "avg(rate(mysql_table_open_cache_overflows{instance=\"$host\"}[$interval]) or irate(mysql_table_open_cache_overflows{instance=\"$host\"}[5m]))",
@@ -2681,7 +2690,7 @@
               "intervalFactor": 1,
               "legendFormat": "Misses due to Overflows",
               "refId": "D",
-              "step": 10
+              "step": 20
             },
             {
               "expr": "avg((rate(mysql_table_open_cache_hits{instance=\"$host\"}[$interval]) or irate(mysql_table_open_cache_hits{instance=\"$host\"}[5m]))/((rate(mysql_table_open_cache_hits{instance=\"$host\"}[$interval]) or irate(mysql_table_open_cache_hits{instance=\"$host\"}[5m]))+(rate(mysql_table_open_cache_misses{instance=\"$host\"}[$interval]) or irate(mysql_table_open_cache_misses{instance=\"$host\"}[5m]))))",
@@ -2689,7 +2698,7 @@
               "intervalFactor": 1,
               "legendFormat": "Table Open Cache Hit Ratio",
               "refId": "E",
-              "step": 10
+              "step": 20
             }
           ],
           "thresholds": [],
@@ -2772,7 +2781,7 @@
               "legendFormat": "Open Tables",
               "metric": "",
               "refId": "B",
-              "step": 10
+              "step": 20
             },
             {
               "calculatedInterval": "2m",
@@ -2784,7 +2793,7 @@
               "legendFormat": "Table Open Cache",
               "metric": "",
               "refId": "C",
-              "step": 10
+              "step": 20
             }
           ],
           "thresholds": [],
@@ -2884,7 +2893,7 @@
               "legendFormat": "Open Table Definitions",
               "metric": "",
               "refId": "B",
-              "step": 10
+              "step": 20
             },
             {
               "calculatedInterval": "2m",
@@ -2896,7 +2905,7 @@
               "legendFormat": "Table Definitions Cache Size",
               "metric": "",
               "refId": "C",
-              "step": 10
+              "step": 20
             },
             {
               "expr": "avg(rate(mysql_opened_table_definitions{instance=\"$host\"}[$interval]) or irate(mysql_opened_table_definitions{instance=\"$host\"}[5m]))",
@@ -2904,7 +2913,7 @@
               "intervalFactor": 1,
               "legendFormat": "Opened Table Definitions",
               "refId": "A",
-              "step": 10
+              "step": 20
             }
           ],
           "thresholds": [],
@@ -3049,7 +3058,7 @@
     ]
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
