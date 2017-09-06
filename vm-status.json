@@ -546,13 +546,15 @@
           "fill": 1,
           "id": 1,
           "legend": {
-            "avg": false,
+            "alignAsTable": false,
+            "avg": true,
             "current": false,
             "max": false,
             "min": false,
+            "rightSide": false,
             "show": true,
             "total": false,
-            "values": false
+            "values": true
           },
           "lines": true,
           "linewidth": 1,
@@ -1039,6 +1041,13 @@
               "line": true,
               "op": "gt",
               "value": 250
+            },
+            {
+              "colorMode": "warning",
+              "fill": true,
+              "line": true,
+              "op": "lt",
+              "value": -250
             }
           ],
           "timeFrom": null,
@@ -1301,7 +1310,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "avg(rate(net_bytes_recv{host=\"$Host\"}[1m])) by (interface)",
+              "expr": "avg(rate(net_bytes_recv{host=\"$Host\"}[1m])) by (interface) * 8",
               "intervalFactor": 2,
               "legendFormat": "RX {{interface}}",
               "metric": "net_bytes_",
@@ -1309,7 +1318,7 @@
               "step": 240
             },
             {
-              "expr": "avg(rate(net_bytes_sent{host=\"$Host\"}[1m])) by (interface)",
+              "expr": "avg(rate(net_bytes_sent{host=\"$Host\"}[1m])) by (interface) * 8",
               "intervalFactor": 2,
               "legendFormat": "TX {{interface}}",
               "metric": "net_bytes_",
@@ -1335,7 +1344,7 @@
           },
           "yaxes": [
             {
-              "format": "bytes",
+              "format": "bps",
               "label": null,
               "logBase": 1,
               "max": null,
