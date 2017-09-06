@@ -1102,6 +1102,7 @@
             },
             {
               "expr": "rate(varnish_n_lru_nuked{host=\"$Host\"}[$Interval])",
+              "interval": "",
               "intervalFactor": 2,
               "legendFormat": "Nuked objects",
               "metric": "varnish_n_lru_nuked",
@@ -1301,7 +1302,7 @@
           "title": "Server - Current number of active sessions",
           "tooltip": {
             "msResolution": true,
-            "shared": false,
+            "shared": true,
             "sort": 0,
             "value_type": "individual"
           },
@@ -1372,7 +1373,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(net_bytes_recv{host=\"$Host\", interface=\"ethfe\"}[1m])",
+              "expr": "rate(net_bytes_recv{host=\"$Host\", interface=\"ethfe\"}[1m]) * 8",
               "intervalFactor": 2,
               "legendFormat": "RX",
               "metric": "net_bytes_",
@@ -1380,7 +1381,7 @@
               "step": 10
             },
             {
-              "expr": "rate(net_bytes_sent{host=\"$Host\", interface=\"ethfe\"}[1m])",
+              "expr": "rate(net_bytes_sent{host=\"$Host\", interface=\"ethfe\"}[1m]) * 8",
               "intervalFactor": 2,
               "legendFormat": "TX",
               "metric": "net_bytes_",
@@ -1406,7 +1407,7 @@
           },
           "yaxes": [
             {
-              "format": "short",
+              "format": "bps",
               "label": null,
               "logBase": 1,
               "max": null,
@@ -1452,7 +1453,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(net_bytes_recv{host=\"$Host\", interface=\"ethsrv\"}[1m])",
+              "expr": "rate(net_bytes_recv{host=\"$Host\", interface=\"ethsrv\"}[1m]) * 8",
               "intervalFactor": 2,
               "legendFormat": "RX",
               "metric": "net_bytes_",
@@ -1460,7 +1461,7 @@
               "step": 10
             },
             {
-              "expr": "rate(net_bytes_sent{host=\"$Host\", interface=\"ethsrv\"}[1m])",
+              "expr": "rate(net_bytes_sent{host=\"$Host\", interface=\"ethsrv\"}[1m]) * 8",
               "intervalFactor": 2,
               "legendFormat": "TX",
               "metric": "net_bytes_",
@@ -1486,7 +1487,7 @@
           },
           "yaxes": [
             {
-              "format": "short",
+              "format": "bps",
               "label": null,
               "logBase": 1,
               "max": null,
