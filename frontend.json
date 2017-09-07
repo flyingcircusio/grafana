@@ -670,11 +670,11 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(nginx_requests{host=\"$Host\"}[5m])",
+              "expr": "rate(nginx_requests{host=\"$Host\"}[$Interval])",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "Requests/s",
+              "legendFormat": "Requests/s [$Interval]",
               "metric": "nginx_accepts",
               "refId": "A",
               "step": 10
@@ -1193,14 +1193,14 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "deriv(haproxy_frontend_connections_total{host=\"$Host\"}[$Interval])",
+              "expr": "rate(haproxy_frontend_connections_total{host=\"$Host\"}[$Interval])",
               "intervalFactor": 2,
               "legendFormat": "{{ frontend }}",
               "refId": "C",
               "step": 10
             },
             {
-              "expr": "deriv(haproxy_backend_connections_total{host=\"$Host\", backend!~\".*-in$\"}[$Interval])",
+              "expr": "rate(haproxy_backend_connections_total{host=\"$Host\", backend!~\".*-in$\"}[$Interval])",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "{{ backend }}",
@@ -1209,7 +1209,7 @@
               "step": 10
             },
             {
-              "expr": "deriv(haproxy_backend_connection_errors_total{host=\"$Host\",backend!~\".*-in$\"}[$Interval])",
+              "expr": "rate(haproxy_backend_connection_errors_total{host=\"$Host\",backend!~\".*-in$\"}[$Interval])",
               "hide": false,
               "intervalFactor": 2,
               "legendFormat": "{{ backend }} Error",
@@ -1254,7 +1254,7 @@
         },
         {
           "aliasColors": {},
-          "bars": false,
+          "bars": true,
           "datasource": "Prometheus",
           "description": "",
           "editable": true,
@@ -1273,7 +1273,7 @@
             "total": false,
             "values": true
           },
-          "lines": true,
+          "lines": false,
           "linewidth": 1,
           "links": [],
           "minSpan": 6,
@@ -1290,11 +1290,11 @@
             {
               "expr": "avg(haproxy_server_current_sessions{host=\"$Host\"}) by (backend, server)",
               "interval": "",
-              "intervalFactor": 2,
+              "intervalFactor": 10,
               "legendFormat": "{{ backend }} / {{ server }}",
               "metric": "haproxy_backend_current_queue",
               "refId": "A",
-              "step": 10
+              "step": 50
             }
           ],
           "thresholds": [],
@@ -1303,7 +1303,7 @@
           "title": "Server - Current number of active sessions",
           "tooltip": {
             "msResolution": true,
-            "shared": true,
+            "shared": false,
             "sort": 0,
             "value_type": "individual"
           },
@@ -1312,7 +1312,9 @@
             "mode": "time",
             "name": null,
             "show": true,
-            "values": []
+            "values": [
+              "current"
+            ]
           },
           "yaxes": [
             {
