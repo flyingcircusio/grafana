@@ -1284,7 +1284,7 @@
           "renderer": "flot",
           "seriesOverrides": [],
           "span": 6,
-          "stack": false,
+          "stack": true,
           "steppedLine": false,
           "targets": [
             {
@@ -1303,7 +1303,7 @@
           "title": "Server - Current number of active sessions",
           "tooltip": {
             "msResolution": true,
-            "shared": false,
+            "shared": true,
             "sort": 0,
             "value_type": "individual"
           },
