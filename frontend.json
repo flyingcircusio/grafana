@@ -665,7 +665,7 @@
               "zindex": 3
             }
           ],
-          "span": 6,
+          "span": 10,
           "stack": false,
           "steppedLine": false,
           "targets": [
@@ -677,7 +677,7 @@
               "legendFormat": "Requests/s [$Interval]",
               "metric": "nginx_accepts",
               "refId": "A",
-              "step": 10
+              "step": 4
             },
             {
               "expr": "nginx_active{host=\"$Host\"}",
@@ -685,7 +685,7 @@
               "legendFormat": "Connections active",
               "metric": "nginx_active",
               "refId": "B",
-              "step": 10
+              "step": 4
             },
             {
               "expr": "nginx_reading{host=\"$Host\"}",
@@ -694,7 +694,7 @@
               "legendFormat": "Connections reading",
               "metric": "nginx",
               "refId": "C",
-              "step": 10
+              "step": 4
             },
             {
               "expr": "nginx_writing{host=\"$Host\"}",
@@ -703,7 +703,7 @@
               "legendFormat": "Connections writing",
               "metric": "nginx",
               "refId": "E",
-              "step": 10
+              "step": 4
             },
             {
               "expr": "nginx_waiting{host=\"$Host\"}",
@@ -712,7 +712,7 @@
               "legendFormat": "Connections waiting",
               "metric": "nginx",
               "refId": "D",
-              "step": 10
+              "step": 4
             }
           ],
           "thresholds": [
@@ -782,7 +782,7 @@
           "points": false,
           "renderer": "flot",
           "seriesOverrides": [],
-          "span": 6,
+          "span": 2,
           "stack": false,
           "steppedLine": false,
           "targets": [
@@ -794,7 +794,7 @@
               "legendFormat": "Accepted",
               "metric": "nginx_accepts",
               "refId": "A",
-              "step": 10
+              "step": 20
             },
             {
               "expr": "-rate(nginx_handled{host=\"$Host\"}[5m])",
@@ -804,7 +804,7 @@
               "legendFormat": "Handled",
               "metric": "nginx_accepts",
               "refId": "B",
-              "step": 10
+              "step": 20
             }
           ],
           "thresholds": [],
@@ -1185,7 +1185,8 @@
           "renderer": "flot",
           "seriesOverrides": [
             {
-              "alias": "/.*Error.*/"
+              "alias": "/.*Error.*/",
+              "transform": "negative-Y"
             }
           ],
           "span": 6,
@@ -1194,6 +1195,7 @@
           "targets": [
             {
               "expr": "rate(haproxy_frontend_connections_total{host=\"$Host\"}[$Interval])",
+              "interval": "",
               "intervalFactor": 2,
               "legendFormat": "{{ frontend }}",
               "refId": "C",
@@ -1288,7 +1290,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "avg(haproxy_server_current_sessions{host=\"$Host\"}) by (backend, server)",
+              "expr": "avg(haproxy_server_current_sessions{host=\"$Host\", backend=~\"$ha_backend\"}) by (backend, server)",
               "interval": "",
               "intervalFactor": 10,
               "legendFormat": "{{ backend }} / {{ server }}",
@@ -2002,6 +2004,32 @@
         "query": "30s,5m,10m",
         "refresh": 2,
         "type": "interval"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "Prometheus",
+        "hide": 0,
+        "includeAll": true,
+        "label": "HA Backends",
+        "multi": true,
+        "name": "ha_backend",
+        "options": [],
+        "query": "label_values(haproxy_server_current_sessions, backend)",
+        "refresh": 1,
+        "regex": "",
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       }
     ]
   },
