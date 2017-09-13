@@ -852,7 +852,7 @@
     },
     {
       "collapse": false,
-      "height": "350",
+      "height": "400",
       "panels": [
         {
           "aliasColors": {},
@@ -878,7 +878,17 @@
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
-          "seriesOverrides": [],
+          "seriesOverrides": [
+            {
+              "alias": "/Backend /",
+              "stack": "A"
+            },
+            {
+              "alias": "Backend total",
+              "lines": false,
+              "stack": false
+            }
+          ],
           "span": 6,
           "stack": false,
           "steppedLine": false,
@@ -895,11 +905,21 @@
             },
             {
               "expr": "rate(varnish_backend_req{host=\"$Host\", status=\"\"}[$Interval])",
+              "hide": false,
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "Backend",
+              "legendFormat": "Backend total",
               "metric": "varnish_back",
               "refId": "B",
+              "step": 10
+            },
+            {
+              "expr": "rate(varnish_fetch{host=\"$Host\"}[$Interval])",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "Backend {{status}}",
+              "metric": "varnish_fetch",
+              "refId": "E",
               "step": 10
             }
           ],
@@ -2008,7 +2028,6 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
           "text": "All",
           "value": [
             "$__all"
