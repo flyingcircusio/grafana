@@ -10,32 +10,16 @@
   "id": 5,
   "links": [
     {
-      "icon": "info",
-      "tags": [],
-      "targetBlank": true,
-      "title": "Grafana Docs",
-      "tooltip": "",
-      "type": "link",
-      "url": "http://www.grafana.org/docs"
-    },
-    {
-      "asDropdown": false,
+      "asDropdown": true,
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
       "tags": [],
+      "title": "Switch to",
       "type": "dashboards"
-    },
-    {
-      "icon": "info",
-      "tags": [],
-      "targetBlank": true,
-      "title": "Prometheus Docs",
-      "type": "link",
-      "url": "http://prometheus.io/docs/introduction/overview/"
     }
   ],
-  "refresh": "10s",
+  "refresh": "5m",
   "rows": [
     {
       "collapse": false,
@@ -350,7 +334,7 @@
       "titleSize": "h6"
     },
     {
-      "collapse": true,
+      "collapse": false,
       "height": "250px",
       "panels": [
         {
@@ -392,7 +376,7 @@
               "intervalFactor": 2,
               "legendFormat": "{{interval}}",
               "refId": "A",
-              "step": 60
+              "step": 240
             }
           ],
           "thresholds": [],
@@ -467,7 +451,7 @@
               "legendFormat": "{{quantile}} ({{interval}})",
               "metric": "",
               "refId": "A",
-              "step": 60
+              "step": 240
             }
           ],
           "thresholds": [],
@@ -556,7 +540,7 @@
               "intervalFactor": 2,
               "legendFormat": "{{quantile}}",
               "refId": "A",
-              "step": 2
+              "step": 120
             }
           ],
           "thresholds": [],
@@ -1265,7 +1249,7 @@
   "schemaVersion": 14,
   "style": "dark",
   "tags": [
-    "prometheus"
+    "fcio"
   ],
   "templating": {
     "list": [
@@ -1282,7 +1266,7 @@
         "multi": false,
         "name": "Host",
         "options": [],
-        "query": "label_values(prometheus_local_storage_checkpoint_duration_seconds, host)",
+        "query": "label_values(prometheus_local_storage_memory_series, host)",
         "refresh": 1,
         "regex": "",
         "sort": 1,
