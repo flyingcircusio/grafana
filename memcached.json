@@ -64,7 +64,7 @@
               "legendFormat": "ratio",
               "metric": "memcached_cmd_set",
               "refId": "A",
-              "step": 20,
+              "step": 10,
               "target": ""
             }
           ],
@@ -87,11 +87,11 @@
           },
           "yaxes": [
             {
-              "format": "percentunit",
-              "label": null,
+              "format": "none",
+              "label": "Get/Set",
               "logBase": 1,
-              "max": 1,
-              "min": 0,
+              "max": null,
+              "min": null,
               "show": true
             },
             {
@@ -141,7 +141,7 @@
               "legendFormat": "% used memory used",
               "metric": "memcached_limit_maxbytes",
               "refId": "A",
-              "step": 20,
+              "step": 10,
               "target": ""
             }
           ],
@@ -218,7 +218,7 @@
               "legendFormat": "items ",
               "metric": "memcached_curr_items",
               "refId": "A",
-              "step": 20,
+              "step": 10,
               "target": ""
             }
           ],
@@ -272,7 +272,7 @@
       "panels": [
         {
           "aliasColors": {},
-          "bars": false,
+          "bars": true,
           "datasource": "Prometheus",
           "editable": true,
           "error": false,
@@ -280,15 +280,17 @@
           "grid": {},
           "id": 2,
           "legend": {
+            "alignAsTable": false,
             "avg": false,
             "current": false,
             "max": false,
             "min": false,
+            "rightSide": false,
             "show": true,
             "total": false,
             "values": false
           },
-          "lines": true,
+          "lines": false,
           "linewidth": 2,
           "links": [],
           "nullPointMode": "connected",
@@ -298,11 +300,11 @@
           "renderer": "flot",
           "seriesOverrides": [],
           "span": 6,
-          "stack": false,
+          "stack": true,
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum (memcached_commands_total{host=~\"$Host\"}) by (command)",
+              "expr": "sum(rate(memcached_commands_total{host=~\"$Host\"}[1m])) by (command)",
               "intervalFactor": 2,
               "legendFormat": "{{command}}",
               "metric": "memcached_",
@@ -311,7 +313,7 @@
               "target": ""
             },
             {
-              "expr": "memcached_cmd_set",
+              "expr": "sum(rate(memcached_cmd_set{host=~\"$Host\"}[1m]))",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "set",
@@ -339,7 +341,7 @@
           },
           "yaxes": [
             {
-              "format": "short",
+              "format": "ops",
               "label": null,
               "logBase": 1,
               "max": null,
@@ -402,7 +404,7 @@
               "legendFormat": "evicts",
               "metric": "memcached_evictions",
               "refId": "A",
-              "step": 20,
+              "step": 10,
               "target": ""
             }
           ],
@@ -566,7 +568,7 @@
               "intervalFactor": 2,
               "legendFormat": "hit ratio",
               "refId": "A",
-              "step": 20,
+              "step": 10,
               "target": ""
             }
           ],
