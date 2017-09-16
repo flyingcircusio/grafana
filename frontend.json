@@ -767,7 +767,7 @@
           "legend": {
             "avg": true,
             "current": false,
-            "max": true,
+            "max": false,
             "min": false,
             "show": true,
             "total": false,
@@ -794,7 +794,7 @@
               "legendFormat": "Accepted",
               "metric": "nginx_accepts",
               "refId": "A",
-              "step": 20
+              "step": 30
             },
             {
               "expr": "-rate(nginx_handled{host=\"$Host\"}[5m])",
@@ -804,7 +804,7 @@
               "legendFormat": "Handled",
               "metric": "nginx_accepts",
               "refId": "B",
-              "step": 20
+              "step": 30
             }
           ],
           "thresholds": [],
@@ -1058,7 +1058,7 @@
           "yaxes": [
             {
               "format": "short",
-              "label": null,
+              "label": "Req/s",
               "logBase": 10,
               "max": null,
               "min": "0",
@@ -1066,9 +1066,9 @@
             },
             {
               "format": "percentunit",
-              "label": null,
+              "label": "Hit rate",
               "logBase": 1,
-              "max": null,
+              "max": "1",
               "min": "0",
               "show": true
             }
@@ -1176,10 +1176,12 @@
     },
     {
       "collapse": false,
-      "height": "350",
+      "height": "400",
       "panels": [
         {
-          "aliasColors": {},
+          "aliasColors": {
+            "apo Error": "#7EB26D"
+          },
           "bars": false,
           "datasource": null,
           "fill": 1,
@@ -1190,7 +1192,7 @@
             "current": true,
             "max": true,
             "min": true,
-            "rightSide": true,
+            "rightSide": false,
             "show": true,
             "total": false,
             "values": true
@@ -1213,14 +1215,6 @@
           "stack": false,
           "steppedLine": false,
           "targets": [
-            {
-              "expr": "rate(haproxy_frontend_connections_total{host=\"$Host\"}[$Interval])",
-              "interval": "",
-              "intervalFactor": 2,
-              "legendFormat": "{{ frontend }}",
-              "refId": "C",
-              "step": 10
-            },
             {
               "expr": "rate(haproxy_backend_connections_total{host=\"$Host\", backend!~\".*-in$\"}[$Interval])",
               "interval": "",
@@ -1276,6 +1270,79 @@
         },
         {
           "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "description": "Back - Current number of queued requests not assigned to any server",
+          "fill": 1,
+          "id": 29,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 3,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "haproxy_backend_current_queue{backend=~\"$ha_backend\",host=\"$Host\"}",
+              "intervalFactor": 2,
+              "legendFormat": "{{backend}}",
+              "refId": "A",
+              "step": 20
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Queue Length",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
           "bars": true,
           "datasource": "Prometheus",
           "description": "",
@@ -1289,8 +1356,8 @@
             "avg": true,
             "current": true,
             "max": true,
-            "min": true,
-            "rightSide": true,
+            "min": false,
+            "rightSide": false,
             "show": true,
             "total": false,
             "values": true
@@ -1305,18 +1372,18 @@
           "points": false,
           "renderer": "flot",
           "seriesOverrides": [],
-          "span": 6,
+          "span": 3,
           "stack": true,
           "steppedLine": false,
           "targets": [
             {
-              "expr": "avg(haproxy_server_current_sessions{host=\"$Host\", backend=~\"$ha_backend\"}) by (backend, server)",
+              "expr": "avg(haproxy_server_current_sessions{host=\"$Host\", backend=~\"$ha_backend\"}) by (backend)",
               "interval": "",
               "intervalFactor": 10,
-              "legendFormat": "{{ backend }} / {{ server }}",
+              "legendFormat": "{{ backend }} ",
               "metric": "haproxy_backend_current_queue",
               "refId": "A",
-              "step": 50
+              "step": 100
             }
           ],
           "thresholds": [],
@@ -2028,6 +2095,7 @@
       {
         "allValue": null,
         "current": {
+          "tags": [],
           "text": "All",
           "value": [
             "$__all"
