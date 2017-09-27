@@ -7,7 +7,17 @@
   "graphTooltip": 1,
   "hideControls": false,
   "id": 1,
-  "links": [],
+  "links": [
+    {
+      "asDropdown": true,
+      "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [],
+      "title": "Switch",
+      "type": "dashboards"
+    }
+  ],
   "refresh": "10s",
   "rows": [
     {
@@ -1179,9 +1189,7 @@
       "height": "400",
       "panels": [
         {
-          "aliasColors": {
-            "apo Error": "#7EB26D"
-          },
+          "aliasColors": {},
           "bars": false,
           "datasource": null,
           "fill": 1,
@@ -1299,7 +1307,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "haproxy_backend_current_queue{backend=~\"$ha_backend\",host=\"$Host\"}",
+              "expr": "haproxy_backend_current_queue{host=\"$Host\"}",
               "intervalFactor": 2,
               "legendFormat": "{{backend}}",
               "refId": "A",
@@ -1377,7 +1385,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "avg(haproxy_server_current_sessions{host=\"$Host\", backend=~\"$ha_backend\"}) by (backend)",
+              "expr": "avg(haproxy_server_current_sessions{host=\"$Host\"}) by (backend)",
               "interval": "",
               "intervalFactor": 10,
               "legendFormat": "{{ backend }} ",
@@ -2091,32 +2099,6 @@
         "query": "30s,5m,10m",
         "refresh": 2,
         "type": "interval"
-      },
-      {
-        "allValue": null,
-        "current": {
-          "tags": [],
-          "text": "All",
-          "value": [
-            "$__all"
-          ]
-        },
-        "datasource": "Prometheus",
-        "hide": 0,
-        "includeAll": true,
-        "label": "HA Backends",
-        "multi": true,
-        "name": "ha_backend",
-        "options": [],
-        "query": "label_values(haproxy_server_current_sessions, backend)",
-        "refresh": 1,
-        "regex": "",
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
       }
     ]
   },
