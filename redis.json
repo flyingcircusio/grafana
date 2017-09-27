@@ -40,7 +40,7 @@
           "decimals": 0,
           "editable": true,
           "error": false,
-          "format": "s",
+          "format": "dtdurations",
           "gauge": {
             "maxValue": 100,
             "minValue": 0,
@@ -85,7 +85,7 @@
           },
           "targets": [
             {
-              "expr": "redis_uptime{host=\"$Host\"}",
+              "expr": "max(redis_uptime{host=\"$Host\"})",
               "intervalFactor": 2,
               "legendFormat": "",
               "metric": "redis_",
@@ -94,6 +94,8 @@
             }
           ],
           "thresholds": "",
+          "timeFrom": null,
+          "timeShift": null,
           "title": "Uptime",
           "type": "singlestat",
           "valueFontSize": "70%",
@@ -104,7 +106,7 @@
               "value": "null"
             }
           ],
-          "valueName": "avg"
+          "valueName": "current"
         },
         {
           "cacheTimeout": null,
@@ -342,7 +344,7 @@
             {
               "format": "short",
               "label": "",
-              "logBase": 1,
+              "logBase": 10,
               "max": null,
               "min": 0,
               "show": true
@@ -414,11 +416,11 @@
               "target": ""
             },
             {
-              "expr": "redis_config_maxmemory{host=~\"$Host\"} ",
+              "expr": "mem_total{host=~\"$Host\"}",
               "hide": false,
               "intervalFactor": 2,
-              "legendFormat": "max",
-              "metric": "redis",
+              "legendFormat": "System memory",
+              "metric": "mem_total",
               "refId": "B",
               "step": 10
             }
@@ -527,7 +529,7 @@
           },
           "yaxes": [
             {
-              "format": "bytes",
+              "format": "Bps",
               "label": null,
               "logBase": 1,
               "max": null,
@@ -656,7 +658,7 @@
           "aliasColors": {},
           "bars": false,
           "datasource": null,
-          "fill": 1,
+          "fill": 0,
           "id": 13,
           "legend": {
             "avg": false,
@@ -668,7 +670,7 @@
             "values": false
           },
           "lines": true,
-          "linewidth": 1,
+          "linewidth": 2,
           "links": [],
           "nullPointMode": "null",
           "percentage": false,
@@ -709,7 +711,7 @@
             {
               "format": "short",
               "label": null,
-              "logBase": 1,
+              "logBase": 10,
               "max": null,
               "min": null,
               "show": true
@@ -844,8 +846,9 @@
       {
         "allValue": null,
         "current": {
-          "text": "test24",
-          "value": "test24"
+          "tags": [],
+          "text": "",
+          "value": ""
         },
         "datasource": "Prometheus",
         "hide": 0,
