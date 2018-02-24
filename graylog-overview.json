@@ -58,7 +58,7 @@
           "interval": null,
           "links": [
             {
-              "dashUri": "db/graylog-details",
+              "dashUri": "file/graylog-details.json",
               "dashboard": "Graylog Details",
               "includeVars": true,
               "keepTime": true,
