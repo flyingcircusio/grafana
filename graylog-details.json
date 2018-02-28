@@ -37,7 +37,7 @@
       "type": "dashboards"
     }
   ],
-  "refresh": "10s",
+  "refresh": "1m",
   "rows": [
     {
       "collapse": false,
@@ -153,7 +153,12 @@
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
-          "seriesOverrides": [],
+          "seriesOverrides": [
+            {
+              "alias": "Age",
+              "yaxis": 2
+            }
+          ],
           "spaceLength": 10,
           "span": 5,
           "stack": false,
@@ -173,6 +178,14 @@
               "intervalFactor": 2,
               "legendFormat": "Size",
               "refId": "B"
+            },
+            {
+              "expr": "avg(graylog_journal_age{host=\"$Host\"})",
+              "format": "time_series",
+              "instant": false,
+              "intervalFactor": 2,
+              "legendFormat": "Age",
+              "refId": "C"
             }
           ],
           "thresholds": [],
@@ -202,8 +215,8 @@
               "show": true
             },
             {
-              "format": "short",
-              "label": null,
+              "format": "s",
+              "label": "",
               "logBase": 1,
               "max": null,
               "min": null,
@@ -1070,7 +1083,7 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
+          "tags": [],
           "text": "",
           "value": ""
         },
@@ -1094,7 +1107,7 @@
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {
