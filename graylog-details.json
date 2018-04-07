@@ -15,7 +15,7 @@
   "description": "Prometheus dashboard for graylog servers",
   "editable": true,
   "gnetId": 37,
-  "graphTooltip": 0,
+  "graphTooltip": 1,
   "hideControls": false,
   "id": 2,
   "links": [
@@ -1021,9 +1021,10 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "jvm_threads_count",
+              "expr": "jvm_threads_count{host=\"$Host\"}",
               "format": "time_series",
               "intervalFactor": 2,
+              "legendFormat": "Thread count",
               "refId": "A"
             }
           ],
@@ -1083,7 +1084,7 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
+          "selected": true,
           "text": "",
           "value": ""
         },
