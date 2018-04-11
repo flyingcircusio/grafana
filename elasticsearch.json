@@ -373,7 +373,7 @@
       "titleSize": "h6"
     },
     {
-      "collapse": true,
+      "collapse": false,
       "height": "",
       "panels": [
         {
