@@ -17,7 +17,7 @@
   "gnetId": 4738,
   "graphTooltip": 1,
   "hideControls": false,
-  "id": 15,
+  "id": 16,
   "links": [],
   "refresh": "1m",
   "rows": [
@@ -84,7 +84,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "max(elasticsearch_cluster_health_status{resource_group=\"$RG\", cluster=\"$cluster\"})",
+              "expr": "max(elasticsearch_cluster_health_status{resource_group=\"$RG\", cluster=\"$cluster\", color=\"red\"} * 3) +\nmax(elasticsearch_cluster_health_status{resource_group=\"$RG\", cluster=\"$cluster\", color=\"yellow\"} * 2) +\nmax(elasticsearch_cluster_health_status{resource_group=\"$RG\", cluster=\"$cluster\", color=\"green\"})",
               "format": "time_series",
               "hide": false,
               "intervalFactor": 2,
@@ -94,7 +94,7 @@
               "step": 60
             }
           ],
-          "thresholds": "1,2",
+          "thresholds": "2,3",
           "title": "Cluster status",
           "transparent": false,
           "type": "singlestat",
@@ -103,17 +103,17 @@
             {
               "op": "=",
               "text": "GREEN",
-              "value": "0"
-            },
-            {
-              "op": "=",
-              "text": "YELLOW",
               "value": "1"
             },
             {
               "op": "=",
-              "text": "RED",
+              "text": "YELLOW",
               "value": "2"
+            },
+            {
+              "op": "=",
+              "text": "RED",
+              "value": "3"
             }
           ],
           "valueName": "current"
