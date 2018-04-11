@@ -22,7 +22,7 @@
   "refresh": "1m",
   "rows": [
     {
-      "collapse": true,
+      "collapse": false,
       "height": "",
       "panels": [
         {
@@ -84,7 +84,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "max(elasticsearch_cluster_health_status{cluster=\"$cluster\"})",
+              "expr": "max(elasticsearch_cluster_health_status{resource_group=\"$RG\", cluster=\"$cluster\"})",
               "format": "time_series",
               "hide": false,
               "intervalFactor": 2,
@@ -177,7 +177,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "max(elasticsearch_cluster_health_number_of_nodes{cluster=\"$cluster\"})",
+              "expr": "max(elasticsearch_cluster_health_number_of_nodes{resource_group=\"$RG\", cluster=\"$cluster\"})",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -259,7 +259,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "max(elasticsearch_cluster_health_number_of_data_nodes{cluster=\"$cluster\"})",
+              "expr": "max(elasticsearch_cluster_health_number_of_data_nodes{resource_group=\"$RG\", cluster=\"$cluster\"})",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -341,7 +341,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "max(elasticsearch_cluster_health_number_of_pending_tasks{cluster=\"$cluster\"})",
+              "expr": "max(elasticsearch_cluster_health_number_of_pending_tasks{resource_group=\"$RG\", cluster=\"$cluster\"})",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -373,7 +373,7 @@
       "titleSize": "h6"
     },
     {
-      "collapse": false,
+      "collapse": true,
       "height": "",
       "panels": [
         {
@@ -437,7 +437,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "max(elasticsearch_cluster_health_active_primary_shards{cluster=\"$cluster\"})",
+              "expr": "max(elasticsearch_cluster_health_active_primary_shards{resource_group=\"$RG\", cluster=\"$cluster\"})",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "B",
@@ -517,7 +517,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "max(elasticsearch_cluster_health_active_shards{cluster=\"$cluster\"})",
+              "expr": "max(elasticsearch_cluster_health_active_shards{resource_group=\"$RG\", cluster=\"$cluster\"})",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "B",
@@ -597,7 +597,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "max(elasticsearch_cluster_health_initializing_shards{cluster=\"$cluster\"})",
+              "expr": "max(elasticsearch_cluster_health_initializing_shards{resource_group=\"$RG\", cluster=\"$cluster\"})",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "B",
@@ -677,7 +677,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "max(elasticsearch_cluster_health_relocating_shards{cluster=\"$cluster\"})",
+              "expr": "max(elasticsearch_cluster_health_relocating_shards{resource_group=\"$RG\", cluster=\"$cluster\"})",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "B",
@@ -757,7 +757,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "max(elasticsearch_cluster_health_delayed_unassigned_shards{cluster=\"$cluster\"})",
+              "expr": "max(elasticsearch_cluster_health_delayed_unassigned_shards{resource_group=\"$RG\", cluster=\"$cluster\"})",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "B",
@@ -829,7 +829,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "elasticsearch_process_cpu_percent{cluster=\"$cluster\",name=~\"$node\"}",
+              "expr": "elasticsearch_process_cpu_percent{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -917,7 +917,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "1-(elasticsearch_filesystem_data_available_bytes{cluster=\"$cluster\",name=~\"$node\"}/elasticsearch_filesystem_data_size_bytes{cluster=\"$cluster\",name=~\"$node\"})",
+              "expr": "1-(elasticsearch_filesystem_data_available_bytes{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}/elasticsearch_filesystem_data_size_bytes{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"})",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1032,7 +1032,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "elasticsearch_indices_docs{cluster=\"$cluster\",name=~\"$node\"}",
+              "expr": "elasticsearch_indices_docs{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1120,7 +1120,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(elasticsearch_indices_indexing_index_total{cluster=\"$cluster\",name=~\"$node\"}[$interval])",
+              "expr": "rate(elasticsearch_indices_indexing_index_total{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1208,7 +1208,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(elasticsearch_indices_indexing_delete_total{cluster=\"$cluster\",name=~\"$node\"}[$interval])",
+              "expr": "rate(elasticsearch_indices_indexing_delete_total{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1296,7 +1296,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(elasticsearch_indices_merges_total{cluster=\"$cluster\",name=~\"$node\"}[$interval])",
+              "expr": "rate(elasticsearch_indices_merges_total{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1396,7 +1396,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(elasticsearch_indices_search_query_time_seconds{cluster=\"$cluster\",name=~\"$node\"}[$interval])",
+              "expr": "rate(elasticsearch_indices_search_query_time_seconds{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1485,7 +1485,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(elasticsearch_indices_indexing_index_time_seconds_total{cluster=\"$cluster\",name=~\"$node\"}[$interval])",
+              "expr": "rate(elasticsearch_indices_indexing_index_time_seconds_total{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1573,7 +1573,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(elasticsearch_indices_merges_total_time_seconds_total{cluster=\"$cluster\",name=~\"$node\"}[$interval])",
+              "expr": "rate(elasticsearch_indices_merges_total_time_seconds_total{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1673,7 +1673,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "elasticsearch_indices_fielddata_memory_size_bytes{cluster=\"$cluster\",name=~\"$node\"}",
+              "expr": "elasticsearch_indices_fielddata_memory_size_bytes{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1761,7 +1761,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(elasticsearch_indices_fielddata_evictions{cluster=\"$cluster\",name=~\"$node\"}[$interval])",
+              "expr": "rate(elasticsearch_indices_fielddata_evictions{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1849,7 +1849,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "elasticsearch_indices_query_cache_memory_size_bytes{cluster=\"$cluster\",name=~\"$node\"}",
+              "expr": "elasticsearch_indices_query_cache_memory_size_bytes{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1937,7 +1937,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(elasticsearch_indices_query_cache_evictions{cluster=\"$cluster\",name=~\"$node\"}[$interval])",
+              "expr": "rate(elasticsearch_indices_query_cache_evictions{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -2037,7 +2037,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "elasticsearch_jvm_memory_used_bytes{area=\"heap\", cluster=\"$cluster\",name=~\"$node\"}",
+              "expr": "elasticsearch_jvm_memory_used_bytes{area=\"heap\", resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -2125,7 +2125,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(elasticsearch_jvm_gc_collection_seconds_count{cluster=\"$cluster\",name=~\"$node\"}[$interval])",
+              "expr": "rate(elasticsearch_jvm_gc_collection_seconds_count{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -2215,7 +2215,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(elasticsearch_jvm_gc_collection_seconds_count{cluster=\"$cluster\",name=~\"$node\"}[$interval])",
+              "expr": "rate(elasticsearch_jvm_gc_collection_seconds_count{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -2340,6 +2340,29 @@
           "text": "",
           "value": ""
         },
+        "datasource": "Prometheus",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Resource Group",
+        "multi": false,
+        "name": "RG",
+        "options": [],
+        "query": "label_values(elasticsearch_cluster_health_status, resource_group)",
+        "refresh": 1,
+        "regex": "",
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "",
+          "value": ""
+        },
         "datasource": "",
         "hide": 0,
         "includeAll": false,
@@ -2347,7 +2370,7 @@
         "multi": false,
         "name": "cluster",
         "options": [],
-        "query": "label_values(cluster)",
+        "query": "label_values(elasticsearch_cluster_health_status{resource_group=\"$RG\"}, cluster)",
         "refresh": 1,
         "regex": "",
         "sort": 0,
@@ -2360,6 +2383,7 @@
       {
         "allValue": null,
         "current": {
+          "selected": true,
           "text": "All",
           "value": "$__all"
         },
@@ -2370,7 +2394,7 @@
         "multi": true,
         "name": "node",
         "options": [],
-        "query": "label_values(elasticsearch_process_cpu_percent{cluster='$cluster'},name)",
+        "query": "label_values(elasticsearch_process_cpu_percent{resource_group=\"$RG\", cluster='$cluster'},name)",
         "refresh": 1,
         "regex": "",
         "sort": 0,
@@ -2413,5 +2437,5 @@
   },
   "timezone": "browser",
   "title": "Elasticsearch",
-  "version": 1
+  "version": 3
 }
