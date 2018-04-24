@@ -14,7 +14,7 @@
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": [],
+      "tags": ["fcio"],
       "title": "Switch to",
       "type": "dashboards"
     }
