@@ -305,7 +305,7 @@
           },
           "targets": [
             {
-              "expr": "prometheus_local_storage_checkpoint_duration_seconds{host=\"$Host\", quantile=\"0.9\"}",
+              "expr": "prometheus_local_storage_checkpoint_last_duration_seconds{host=\"$Host\"}",
               "intervalFactor": 2,
               "metric": "prometheus_local_storage_checkpoint_duration_seconds",
               "refId": "A",
@@ -313,7 +313,7 @@
             }
           ],
           "thresholds": "",
-          "title": "Checkpoint duration (q90)",
+          "title": "Checkpoint duration",
           "type": "singlestat",
           "valueFontSize": "80%",
           "valueMaps": [
