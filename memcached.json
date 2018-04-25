@@ -790,7 +790,6 @@
   "schemaVersion": 14,
   "style": "dark",
   "tags": [
-    "prometheus",
     "memcached",
     "fcio"
   ],

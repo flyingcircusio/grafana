@@ -1422,7 +1422,7 @@
   "style": "dark",
   "tags": [
     "MySQL",
-    "Percona"
+    "fcio"
   ],
   "templating": {
     "list": [

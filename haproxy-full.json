@@ -4451,7 +4451,7 @@
   "style": "dark",
   "tags": [
     "haproxy",
-    "servers"
+    "fcio"
   ],
   "templating": {
     "list": [
