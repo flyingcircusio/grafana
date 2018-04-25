@@ -2276,7 +2276,7 @@
   "style": "dark",
   "tags": [
     "elasticsearch",
-    "fcio",
+    "fcio"
   ],
   "templating": {
     "list": [
