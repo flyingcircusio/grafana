@@ -5,7 +5,7 @@
   "description": "Prometheus dashboard for memcached servers",
   "editable": true,
   "gnetId": 37,
-  "graphTooltip": 0,
+  "graphTooltip": 1,
   "hideControls": false,
   "id": 8,
   "links": [
