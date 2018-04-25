@@ -657,7 +657,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": null,
+          "datasource": "Prometheus",
           "fill": 0,
           "id": 13,
           "legend": {

@@ -17,7 +17,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": null,
+          "datasource": "Prometheus",
           "description": "",
           "fill": 1,
           "id": 5,
@@ -144,7 +144,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": null,
+          "datasource": "Prometheus",
           "fill": 1,
           "id": 19,
           "legend": {
@@ -246,7 +246,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": null,
+          "datasource": "Prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -321,7 +321,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": null,
+          "datasource": "Prometheus",
           "decimals": null,
           "format": "bytes",
           "gauge": {
@@ -398,7 +398,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": null,
+          "datasource": "Prometheus",
           "format": "bytes",
           "gauge": {
             "maxValue": 100,
@@ -474,7 +474,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": null,
+          "datasource": "Prometheus",
           "format": "bytes",
           "gauge": {
             "maxValue": 100,
@@ -550,7 +550,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": null,
+          "datasource": "Prometheus",
           "decimals": null,
           "format": "dtdurations",
           "gauge": {
@@ -627,7 +627,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": null,
+          "datasource": "Prometheus",
           "format": "none",
           "gauge": {
             "maxValue": 100,
@@ -708,7 +708,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": null,
+          "datasource": "Prometheus",
           "fill": 1,
           "id": 1,
           "legend": {
@@ -823,7 +823,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": null,
+          "datasource": "Prometheus",
           "fill": 1,
           "id": 2,
           "legend": {
@@ -937,7 +937,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": null,
+          "datasource": "Prometheus",
           "fill": 1,
           "id": 6,
           "legend": {
@@ -1035,7 +1035,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": null,
+          "datasource": "Prometheus",
           "fill": 1,
           "id": 7,
           "legend": {
@@ -1128,7 +1128,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": null,
+          "datasource": "Prometheus",
           "fill": 1,
           "id": 8,
           "legend": {
@@ -1201,7 +1201,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": null,
+          "datasource": "Prometheus",
           "fill": 1,
           "id": 10,
           "legend": {
@@ -1293,7 +1293,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": null,
+          "datasource": "Prometheus",
           "fill": 1,
           "id": 9,
           "legend": {
@@ -1366,7 +1366,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": null,
+          "datasource": "Prometheus",
           "fill": 1,
           "id": 11,
           "legend": {
@@ -1458,7 +1458,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": null,
+          "datasource": "Prometheus",
           "fill": 1,
           "id": 3,
           "legend": {
@@ -1539,7 +1539,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": null,
+          "datasource": "Prometheus",
           "fill": 1,
           "id": 4,
           "legend": {
