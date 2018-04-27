@@ -1644,7 +1644,7 @@
         "multi": false,
         "name": "Host",
         "options": [],
-        "query": "label_values(host)",
+        "query": "label_values(nginx_requests, host)",
         "refresh": 1,
         "regex": "",
         "sort": 1,

@@ -1996,7 +1996,7 @@
         "multi": false,
         "name": "Host",
         "options": [],
-        "query": "label_values(host)",
+        "query": "label_values(system_n_cpus, host)",
         "refresh": 1,
         "regex": "",
         "sort": 1,
