@@ -7,7 +7,17 @@
   "graphTooltip": 1,
   "hideControls": true,
   "id": 10,
-  "links": [],
+  "links": [
+    {
+      "asDropdown": true,
+      "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": ["fcio"],
+      "title": "Switch",
+      "type": "dashboards"
+    }
+  ],
   "rows": [
     {
       "collapse": false,
