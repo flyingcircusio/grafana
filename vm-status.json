@@ -1036,7 +1036,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(rate(diskio_reads{host=\"$Host\", name!~\".*[0-9]$\"}[1m]))",
+              "expr": "sum(rate(diskio_reads{host=\"$Host\", name!~\".*[0-9]$\"}[5m]))",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "Read",
@@ -1045,7 +1045,7 @@
               "step": 4
             },
             {
-              "expr": "sum(rate(diskio_writes{host=\"$Host\", name!~\".*[0-9]$\"}[1m]))",
+              "expr": "sum(rate(diskio_writes{host=\"$Host\", name!~\".*[0-9]$\"}[5m]))",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "Write",
@@ -1342,7 +1342,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "avg(rate(diskio_read_bytes{host=\"$Host\", name!~\".+[0-9]+\"}[1m])) by (name)",
+              "expr": "avg(rate(diskio_read_bytes{host=\"$Host\", name!~\".+[0-9]+\"}[5m])) by (name)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1352,7 +1352,7 @@
               "step": 4
             },
             {
-              "expr": "avg(rate(diskio_write_bytes{host=\"$Host\", name!~\".+[0-9]+\"}[1m])) by (name)",
+              "expr": "avg(rate(diskio_write_bytes{host=\"$Host\", name!~\".+[0-9]+\"}[5m])) by (name)",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Write {{name}}",
@@ -1619,7 +1619,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "avg(rate(net_bytes_recv{host=\"$Host\", interface=\"ethfe\"}[1m])) * 8",
+              "expr": "avg(rate(net_bytes_recv{host=\"$Host\", interface=\"ethfe\"}[5m])) * 8",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "RX ",
@@ -1628,7 +1628,7 @@
               "step": 4
             },
             {
-              "expr": "avg(rate(net_bytes_sent{host=\"$Host\", interface=\"ethfe\"}[1m])) * 8",
+              "expr": "avg(rate(net_bytes_sent{host=\"$Host\", interface=\"ethfe\"}[5m])) * 8",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "TX",
@@ -1708,7 +1708,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "avg(rate(net_bytes_recv{host=\"$Host\", interface=\"ethsrv\"}[1m])) * 8",
+              "expr": "avg(rate(net_bytes_recv{host=\"$Host\", interface=\"ethsrv\"}[5m])) * 8",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "RX ",
@@ -1717,7 +1717,7 @@
               "step": 4
             },
             {
-              "expr": "avg(rate(net_bytes_sent{host=\"$Host\", interface=\"ethsrv\"}[1m])) * 8",
+              "expr": "avg(rate(net_bytes_sent{host=\"$Host\", interface=\"ethsrv\"}[5m])) * 8",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "TX",
