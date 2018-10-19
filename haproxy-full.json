@@ -65,7 +65,7 @@
               "step": 60
             },
             {
-              "expr": "count_scalar(haproxy_backend_up{instance=~\"$host:$port\"} == 0)",
+              "expr": "count(haproxy_backend_up{instance=~\"$host:$port\"} == 0) or (1-absent(haproxy_backend_up{instance=~\"$host:$port\"} == 0))",
               "interval": "$interval",
               "intervalFactor": 2,
               "legendFormat": "Backends Down",

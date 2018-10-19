@@ -607,7 +607,7 @@
           },
           "targets": [
             {
-              "expr": "count_scalar(haproxy_backend_up{host=\"$Host\"} == 0)",
+              "expr": "count(haproxy_backend_up{host=\"$Host\"} == 0) or (1-absent(haproxy_backend_up{host=\"$Host\"} == 0))",
               "intervalFactor": 2,
               "legendFormat": "",
               "metric": "disk_total",
