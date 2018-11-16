@@ -3106,11 +3106,11 @@
         "options": [
           {
             "selected": true,
-            "text": "60",
-            "value": "60"
+            "text": "15",
+            "value": "15"
           }
         ],
-        "query": "60",
+        "query": "15",
         "type": "constant"
       },
       {
