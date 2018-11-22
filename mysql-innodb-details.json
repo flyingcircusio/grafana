@@ -7,6 +7,7 @@
   "graphTooltip": 1,
   "hideControls": true,
   "id": 10,
+  "uid": "fciomysqlinnodb",
   "links": [
     {
       "asDropdown": true,

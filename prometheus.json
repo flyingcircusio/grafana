@@ -18,6 +18,7 @@
   "graphTooltip": 1,
   "hideControls": false,
   "id": 49,
+  "uid": "fcioprometheus",
   "links": [],
   "refresh": "5m",
   "rows": [

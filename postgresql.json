@@ -18,6 +18,7 @@
   "graphTooltip": 1,
   "hideControls": false,
   "id": 6,
+  "uid": "fciopostgresql",
   "links": [],
   "refresh": false,
   "rows": [

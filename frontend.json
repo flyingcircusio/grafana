@@ -7,6 +7,7 @@
   "graphTooltip": 1,
   "hideControls": false,
   "id": 1,
+  "uid": "fciofrontend",
   "links": [
     {
       "asDropdown": true,

@@ -7,6 +7,7 @@
   "graphTooltip": 1,
   "hideControls": true,
   "id": 5,
+  "uid": "fciomysql",
   "links": [
     {
       "asDropdown": true,
