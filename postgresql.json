@@ -1103,7 +1103,7 @@
             {
               "alias": "conflicts",
               "dsType": "prometheus",
-              "expr": "sum(rate(postgresql_deadlocks{db=~\"$db\",host=\"$host\"}[5m]))",
+              "expr": "sum(increase(postgresql_deadlocks{db=~\"$db\",host=\"$host\"}[5m]))",
               "groupBy": [
                 {
                   "params": [
@@ -1155,7 +1155,7 @@
             {
               "alias": "deadlocks",
               "dsType": "prometheus",
-              "expr": "sum(rate(postgresql_conflicts{db=~\"$db\",host=\"$host\"}[5m]))",
+              "expr": "sum(increase(postgresql_conflicts{db=~\"$db\",host=\"$host\"}[5m]))",
               "groupBy": [
                 {
                   "params": [
