@@ -459,7 +459,7 @@
           },
           "targets": [
             {
-              "expr": "avg(rate(net_bytes_sent{host=\"$Host\", interface=\"ethfe\"}[1m])) by (host) * 8",
+              "expr": "avg(irate(net_bytes_sent{host=\"$Host\", interface=\"ethfe\"}[1m])) by (host) * 8",
               "intervalFactor": 2,
               "refId": "A",
               "step": 60
@@ -1474,7 +1474,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(net_bytes_recv{host=\"$Host\", interface=\"ethfe\"}[1m]) * 8",
+              "expr": "irate(net_bytes_recv{host=\"$Host\", interface=\"ethfe\"}[1m]) * 8",
               "intervalFactor": 2,
               "legendFormat": "RX",
               "metric": "net_bytes_",
@@ -1482,7 +1482,7 @@
               "step": 10
             },
             {
-              "expr": "rate(net_bytes_sent{host=\"$Host\", interface=\"ethfe\"}[1m]) * 8",
+              "expr": "irate(net_bytes_sent{host=\"$Host\", interface=\"ethfe\"}[1m]) * 8",
               "intervalFactor": 2,
               "legendFormat": "TX",
               "metric": "net_bytes_",
@@ -1554,7 +1554,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(net_bytes_recv{host=\"$Host\", interface=\"ethsrv\"}[1m]) * 8",
+              "expr": "irate(net_bytes_recv{host=\"$Host\", interface=\"ethsrv\"}[1m]) * 8",
               "intervalFactor": 2,
               "legendFormat": "RX",
               "metric": "net_bytes_",
@@ -1562,7 +1562,7 @@
               "step": 10
             },
             {
-              "expr": "rate(net_bytes_sent{host=\"$Host\", interface=\"ethsrv\"}[1m]) * 8",
+              "expr": "irate(net_bytes_sent{host=\"$Host\", interface=\"ethsrv\"}[1m]) * 8",
               "intervalFactor": 2,
               "legendFormat": "TX",
               "metric": "net_bytes_",
