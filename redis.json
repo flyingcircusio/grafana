@@ -168,7 +168,7 @@
           },
           "targets": [
             {
-              "expr": "redis_clients{host=\"$Host\"}",
+              "expr": "max(redis_clients{host=\"$Host\"})",
               "intervalFactor": 2,
               "legendFormat": "",
               "metric": "",
