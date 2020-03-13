@@ -804,8 +804,12 @@
       "id": 51,
       "panels": [],
       "repeat": null,
-      "title": "New row",
-      "type": "row"
+      "type": "row",
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "MySQL 5.6 only",
+      "titleSize": "h6"
     },
     {
       "aliasColors": {},
