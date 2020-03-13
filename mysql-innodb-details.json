@@ -791,7 +791,7 @@
       "repeatIteration": null,
       "repeatRowId": null,
       "showTitle": false,
-      "title": "New row",
+      "title": "MySQL 5.6 only",
       "titleSize": "h6"
     },
     {
