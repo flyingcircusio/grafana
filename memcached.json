@@ -500,9 +500,9 @@
           },
           "targets": [
             {
-              "expr": "memcached_uptime",
+              "expr": "max(memcached_uptime{host='$Host'})",
               "intervalFactor": 2,
-              "metric": "max(memcached_uptime{host='$Host'})",
+              "metric": "memcached_uptime",
               "refId": "A",
               "step": 60
             }
