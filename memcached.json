@@ -502,7 +502,7 @@
             {
               "expr": "memcached_uptime",
               "intervalFactor": 2,
-              "metric": "memcached_uptime",
+              "metric": "max(memcached_uptime{host='$Host'})",
               "refId": "A",
               "step": 60
             }
