@@ -2930,9 +2930,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
-          "text": "aareal00",
-          "value": "aareal00"
+          "tags": [],
+          "text": "",
+          "value": ""
         },
         "datasource": "Prometheus",
         "definition": "",
