@@ -15,7 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1638347028197,
+  "id": 94,
+  "iteration": 1640617204457,
   "links": [
     {
       "asDropdown": true,
@@ -624,7 +625,7 @@
       "id": 24,
       "panels": [],
       "repeat": null,
-      "title": "CPU Statistics",
+      "title": "CPU",
       "type": "row"
     },
     {
@@ -640,8 +641,8 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 7,
-        "w": 12,
+        "h": 11,
+        "w": 9,
         "x": 0,
         "y": 5
       },
@@ -666,7 +667,7 @@
         "alertThreshold": true
       },
       "percentage": true,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.12",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -689,6 +690,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "exemplar": true,
           "expr": "avg(cpu_usage_iowait{cpu=\"cpu-total\", host=\"$Host\"})",
           "hide": false,
           "interval": "",
@@ -755,14 +757,16 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:451",
           "format": "percent",
           "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
+          "max": "100",
+          "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:452",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -777,124 +781,10 @@
       }
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
+      "aliasColors": {
+        "avg300": "#eab839",
+        "avg60": "#6ed0e0"
       },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 12,
-        "y": 5
-      },
-      "hiddenSeries": false,
-      "id": 2,
-      "legend": {
-        "alignAsTable": false,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.11",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "avg(system_load1{host=\"$Host\"})",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "1",
-          "metric": "system_load1",
-          "refId": "A",
-          "step": 4
-        },
-        {
-          "expr": "avg(system_load5{host=\"$Host\"})",
-          "intervalFactor": 2,
-          "legendFormat": "5",
-          "metric": "system_load1",
-          "refId": "B",
-          "step": 4
-        },
-        {
-          "expr": "avg(system_load15{host=\"$Host\"})",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "15",
-          "metric": "system_load1",
-          "refId": "C",
-          "step": 4
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Load",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": [
-          "total"
-        ]
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 10,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
@@ -907,10 +797,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 0,
-        "y": 12
+        "h": 11,
+        "w": 9,
+        "x": 9,
+        "y": 5
       },
       "hiddenSeries": false,
       "id": 31,
@@ -930,7 +820,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.12",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -951,7 +841,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Share of time that some tasks are blocked on CPU",
+      "title": "CPU Pressure (some)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -992,18 +882,243 @@
       }
     },
     {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 18,
+        "y": 5
+      },
+      "hiddenSeries": false,
+      "id": 13,
+      "legend": {
+        "avg": true,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.12",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "Process Forks",
+          "lines": false,
+          "points": true,
+          "yaxis": 2
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "avg(rate(kernel_context_switches{host=\"$Host\"}[5m]))",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "Context switches",
+          "metric": "kernel_context_switches",
+          "refId": "A",
+          "step": 10
+        },
+        {
+          "expr": "avg(rate(kernel_processes_forked{host=\"$Host\"}[5m]))",
+          "intervalFactor": 2,
+          "legendFormat": "Process Forks",
+          "metric": "kernel_processes_forked",
+          "refId": "B",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Context switches / Forks",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 18,
+        "y": 11
+      },
+      "hiddenSeries": false,
+      "id": 19,
+      "legend": {
+        "alignAsTable": false,
+        "avg": true,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.12",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "Processes running",
+          "bars": true,
+          "lines": false
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "avg(processes_total{host=\"$Host\"})",
+          "intervalFactor": 2,
+          "legendFormat": "Processes total",
+          "metric": "processes_total",
+          "refId": "D",
+          "step": 10
+        },
+        {
+          "expr": "avg(processes_running{host=\"$Host\"})",
+          "intervalFactor": 5,
+          "legendFormat": "Processes running",
+          "metric": "processes_running",
+          "refId": "E",
+          "step": 25
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Processes",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": [
+          "total"
+        ]
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 10,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 10,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
       "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 19
+        "y": 16
       },
       "id": 25,
       "panels": [],
       "repeat": null,
-      "title": "Memory Statistics",
+      "title": "Memory",
       "type": "row"
     },
     {
@@ -1020,9 +1135,9 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 12,
+        "w": 8,
         "x": 0,
-        "y": 20
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 6,
@@ -1043,7 +1158,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.12",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1142,9 +1257,9 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 12,
-        "x": 12,
-        "y": 20
+        "w": 4,
+        "x": 8,
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 7,
@@ -1165,7 +1280,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.12",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1246,10 +1361,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 8,
+        "h": 7,
         "w": 12,
-        "x": 0,
-        "y": 27
+        "x": 12,
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 33,
@@ -1269,7 +1384,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.12",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1282,111 +1397,23 @@
           "exemplar": true,
           "expr": "psi_memory{period!=\"total\",host=\"$Host\",extent=\"some\"}",
           "interval": "",
-          "legendFormat": "{{period}}",
+          "legendFormat": "{{period}} some",
           "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Share of time that some tasks are blocked on Memory",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:629",
-          "format": "percent",
-          "label": null,
-          "logBase": 1,
-          "max": "100",
-          "min": "0",
-          "show": true
         },
         {
-          "$$hashKey": "object:630",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 27
-      },
-      "hiddenSeries": false,
-      "id": 35,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.11",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
           "exemplar": true,
-          "expr": "psi_memory{period!=\"total\",host=\"$Host\",extent=\"full\"}",
+          "expr": "-psi_memory{period!=\"total\",host=\"$Host\",extent=\"full\"}",
+          "hide": false,
           "interval": "",
-          "legendFormat": "{{period}}",
-          "refId": "A"
+          "legendFormat": "{{period}} full",
+          "refId": "B"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Share of time that all tasks are blocked on Memory",
+      "title": "Memory Pressure",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1407,7 +1434,7 @@
           "label": null,
           "logBase": 1,
           "max": "100",
-          "min": "0",
+          "min": "-100",
           "show": true
         },
         {
@@ -1432,12 +1459,12 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 35
+        "y": 24
       },
       "id": 26,
       "panels": [],
       "repeat": null,
-      "title": "IO Statistics",
+      "title": "IO",
       "type": "row"
     },
     {
@@ -1457,7 +1484,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 36
+        "y": 25
       },
       "hiddenSeries": false,
       "id": 5,
@@ -1478,7 +1505,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.12",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1572,231 +1599,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 12,
-        "y": 36
-      },
-      "hiddenSeries": false,
-      "id": 13,
-      "legend": {
-        "avg": true,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.11",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "alias": "Process Forks",
-          "lines": false,
-          "points": true,
-          "yaxis": 2
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "avg(rate(kernel_context_switches{host=\"$Host\"}[5m]))",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "Context switches",
-          "metric": "kernel_context_switches",
-          "refId": "A",
-          "step": 10
-        },
-        {
-          "expr": "avg(rate(kernel_processes_forked{host=\"$Host\"}[5m]))",
-          "intervalFactor": 2,
-          "legendFormat": "Process Forks",
-          "metric": "kernel_processes_forked",
-          "refId": "B",
-          "step": 10
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Context switches / Forks",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 18,
-        "y": 36
-      },
-      "hiddenSeries": false,
-      "id": 19,
-      "legend": {
-        "alignAsTable": false,
-        "avg": true,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.11",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "alias": "Processes running",
-          "bars": true,
-          "lines": false
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "avg(processes_total{host=\"$Host\"})",
-          "intervalFactor": 2,
-          "legendFormat": "Processes total",
-          "metric": "processes_total",
-          "refId": "D",
-          "step": 10
-        },
-        {
-          "expr": "avg(processes_running{host=\"$Host\"})",
-          "intervalFactor": 5,
-          "legendFormat": "Processes running",
-          "metric": "processes_running",
-          "refId": "E",
-          "step": 25
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Processes",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": [
-          "total"
-        ]
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 10,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 10,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
       "datasource": null,
       "fieldConfig": {
         "defaults": {},
@@ -1805,13 +1607,13 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 8,
+        "h": 7,
         "w": 12,
-        "x": 0,
-        "y": 43
+        "x": 12,
+        "y": 25
       },
       "hiddenSeries": false,
-      "id": 37,
+      "id": 35,
       "legend": {
         "avg": false,
         "current": false,
@@ -1828,7 +1630,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.12",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1841,111 +1643,23 @@
           "exemplar": true,
           "expr": "psi_io{period!=\"total\",host=\"$Host\",extent=\"some\"}",
           "interval": "",
-          "legendFormat": "{{period}}",
+          "legendFormat": "{{period}} some",
           "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Share of time that some tasks are blocked on IO",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:629",
-          "format": "percent",
-          "label": null,
-          "logBase": 1,
-          "max": "100",
-          "min": "0",
-          "show": true
         },
         {
-          "$$hashKey": "object:630",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 43
-      },
-      "hiddenSeries": false,
-      "id": 39,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.11",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
           "exemplar": true,
-          "expr": "psi_io{period!=\"total\",host=\"$Host\",extent=\"full\"}",
+          "expr": "-psi_io{period!=\"total\",host=\"$Host\",extent=\"full\"}",
+          "hide": false,
           "interval": "",
-          "legendFormat": "{{period}}",
-          "refId": "A"
+          "legendFormat": "{{period}} full",
+          "refId": "B"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Share of time that all tasks are blocked on IO",
+      "title": "IO Pressure",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1963,10 +1677,10 @@
         {
           "$$hashKey": "object:629",
           "format": "percent",
-          "label": null,
+          "label": "",
           "logBase": 1,
           "max": "100",
-          "min": "0",
+          "min": "-100",
           "show": true
         },
         {
@@ -1991,7 +1705,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 51
+        "y": 32
       },
       "id": 27,
       "panels": [],
@@ -2012,10 +1726,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 11,
+        "h": 12,
         "w": 18,
         "x": 0,
-        "y": 52
+        "y": 33
       },
       "hiddenSeries": false,
       "id": 8,
@@ -2039,7 +1753,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.12",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2129,7 +1843,7 @@
         "h": 6,
         "w": 6,
         "x": 18,
-        "y": 52
+        "y": 33
       },
       "height": "200px",
       "hiddenSeries": false,
@@ -2151,7 +1865,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.12",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2237,7 +1951,7 @@
         "h": 6,
         "w": 6,
         "x": 18,
-        "y": 58
+        "y": 39
       },
       "height": "200",
       "hiddenSeries": false,
@@ -2259,7 +1973,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.12",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2336,12 +2050,12 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 64
+        "y": 45
       },
       "id": 28,
       "panels": [],
       "repeat": null,
-      "title": "Network Traffic",
+      "title": "Network interfaces",
       "type": "row"
     },
     {
@@ -2360,7 +2074,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 65
+        "y": 46
       },
       "height": "",
       "hiddenSeries": false,
@@ -2384,7 +2098,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.12",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2469,7 +2183,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 65
+        "y": 46
       },
       "height": "",
       "hiddenSeries": false,
@@ -2493,7 +2207,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.12",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2569,12 +2283,12 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 73
+        "y": 54
       },
       "id": 29,
       "panels": [],
       "repeat": null,
-      "title": "Connection Statistics",
+      "title": "IP stack",
       "type": "row"
     },
     {
@@ -2591,9 +2305,9 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 9,
-        "w": 18,
+        "w": 12,
         "x": 0,
-        "y": 74
+        "y": 55
       },
       "hiddenSeries": false,
       "id": 20,
@@ -2618,7 +2332,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.12",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2688,6 +2402,115 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 12,
+        "y": 55
+      },
+      "hiddenSeries": false,
+      "id": 37,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.12",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "Conntrack Table Fullness",
+          "yaxis": 2
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "conntrack_ip_conntrack_count{host=\"$Host\"}/conntrack_ip_conntrack_max{host=\"$Host\"}",
+          "interval": "",
+          "legendFormat": "Conntrack Table Fullness",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "conntrack_ip_conntrack_count{host=\"$Host\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Conntrack Table Entries",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Connection Tracking Table Data",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:230",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:231",
+          "format": "percentunit",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": true,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
       "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {},
@@ -2699,7 +2522,7 @@
         "h": 9,
         "w": 6,
         "x": 18,
-        "y": 74
+        "y": 55
       },
       "hiddenSeries": false,
       "id": 22,
@@ -2720,7 +2543,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.12",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2807,132 +2630,20 @@
         "align": false,
         "alignLevel": null
       }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 9,
-        "w": 18,
-        "x": 0,
-        "y": 83
-      },
-      "hiddenSeries": false,
-      "id": 41,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.11",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "alias": "Conntrack Table Fullness",
-          "yaxis": 2
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "conntrack_ip_conntrack_count{host=\"$Host\"}/conntrack_ip_conntrack_max{host=\"$Host\"}",
-          "interval": "",
-          "legendFormat": "Conntrack Table Fullness",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "conntrack_ip_conntrack_count{host=\"$Host\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Conntrack Table Entries",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Connection Tracking Table Data",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:230",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:231",
-          "format": "percentunit",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": true,
-        "alignLevel": null
-      }
     }
   ],
-  "refresh": "1m",
+  "refresh": false,
   "schemaVersion": 27,
   "style": "dark",
-  "tags": [
-    "vmstatus",
-    "fcio"
-  ],
+  "tags": [],
   "templating": {
     "list": [
       {
         "allValue": null,
         "current": {
-          "tags": [],
-          "text": "",
-          "value": ""
+          "selected": false,
+          "text": "test28",
+          "value": "test28"
         },
         "datasource": "Prometheus",
         "definition": "",
@@ -2961,7 +2672,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-2d",
     "to": "now"
   },
   "timepicker": {
@@ -2990,7 +2701,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "VM Status",
-  "uid": "fciovmstatus",
-  "version": 13
+  "title": "VM Status With Pressure Data (ekw) WIP",
+  "uid": "7HVs3R07k",
+  "version": 2
 }
