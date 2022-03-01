@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 1,
   "id": 94,
-  "iteration": 1640617204457,
+  "iteration": 1646126010714,
   "links": [
     {
       "asDropdown": true,
@@ -797,7 +797,7 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 11,
+        "h": 6,
         "w": 9,
         "x": 9,
         "y": 5
@@ -983,6 +983,123 @@
           "format": "short",
           "label": null,
           "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 9,
+        "x": 9,
+        "y": 11
+      },
+      "hiddenSeries": false,
+      "id": 39,
+      "legend": {
+        "alignAsTable": false,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.12",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "avg(system_load1{host=\"$Host\"})",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "1",
+          "metric": "system_load1",
+          "refId": "A",
+          "step": 4
+        },
+        {
+          "expr": "avg(system_load5{host=\"$Host\"})",
+          "intervalFactor": 2,
+          "legendFormat": "5",
+          "metric": "system_load1",
+          "refId": "B",
+          "step": 4
+        },
+        {
+          "expr": "avg(system_load15{host=\"$Host\"})",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "15",
+          "metric": "system_load1",
+          "refId": "C",
+          "step": 4
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Load",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": [
+          "total"
+        ]
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 10,
           "max": null,
           "min": null,
           "show": true
@@ -2703,5 +2820,5 @@
   "timezone": "browser",
   "title": "VM Status With Pressure Data (ekw) WIP",
   "uid": "7HVs3R07k",
-  "version": 2
+  "version": 6
 }
