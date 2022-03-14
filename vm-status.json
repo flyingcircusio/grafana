@@ -2758,9 +2758,7 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "test28",
-          "value": "test28"
+          "selected": false
         },
         "datasource": "Prometheus",
         "definition": "",
@@ -2789,7 +2787,7 @@
     ]
   },
   "time": {
-    "from": "now-2d",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
@@ -2818,7 +2816,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "VM Status With Pressure Data (ekw) WIP",
+  "title": "VM Status",
   "uid": "7HVs3R07k",
   "version": 6
 }
