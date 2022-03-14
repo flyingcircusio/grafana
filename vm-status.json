@@ -15,7 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "id": 94,
+  "id": 2,
+  "uid": "fciovmstatus",
   "iteration": 1646126010714,
   "links": [
     {
@@ -30,6 +31,7 @@
       "type": "dashboards"
     }
   ],
+  "refresh": "1m",
   "panels": [
     {
       "collapsed": false,
@@ -2749,10 +2751,12 @@
       }
     }
   ],
-  "refresh": false,
   "schemaVersion": 27,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "vmstatus",
+    "fcio"
+  ],
   "templating": {
     "list": [
       {
@@ -2817,6 +2821,5 @@
   },
   "timezone": "browser",
   "title": "VM Status",
-  "uid": "7HVs3R07k",
   "version": 6
 }
