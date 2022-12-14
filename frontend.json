@@ -1386,7 +1386,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "avg(haproxy_server_current_sessions{host=\"$Host\"}) by (backend)",
+              "expr": "sum(haproxy_server_current_sessions{host=\"$Host\"}) by (backend)",
               "interval": "",
               "intervalFactor": 10,
               "legendFormat": "{{ backend }} ",
