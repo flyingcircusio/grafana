@@ -4458,10 +4458,7 @@
     "list": [
       {
         "allValue": null,
-        "current": {
-          "text": "",
-          "value": ""
-        },
+        "current": {},
         "datasource": "Prometheus",
         "hide": 0,
         "includeAll": false,
@@ -4481,10 +4478,7 @@
       },
       {
         "allValue": null,
-        "current": {
-          "text": "9126",
-          "value": "9126"
-        },
+        "current": {},
         "datasource": "Prometheus",
         "hide": 2,
         "includeAll": false,
@@ -4504,10 +4498,7 @@
       },
       {
         "allValue": null,
-        "current": {
-          "text": "All",
-          "value": "$__all"
-        },
+        "current": {},
         "datasource": "Prometheus",
         "hide": 0,
         "includeAll": true,
@@ -4527,10 +4518,7 @@
       },
       {
         "allValue": null,
-        "current": {
-          "text": "All",
-          "value": "$__all"
-        },
+        "current": {},
         "datasource": "Prometheus",
         "hide": 0,
         "includeAll": true,
@@ -4550,10 +4538,7 @@
       },
       {
         "allValue": null,
-        "current": {
-          "text": "All",
-          "value": "$__all"
-        },
+        "current": {},
         "datasource": "Prometheus",
         "hide": 0,
         "includeAll": true,
@@ -4573,10 +4558,7 @@
       },
       {
         "allValue": null,
-        "current": {
-          "text": "All",
-          "value": "$__all"
-        },
+        "current": {},
         "datasource": "Prometheus",
         "hide": 0,
         "includeAll": true,
@@ -4598,10 +4580,7 @@
         "auto": true,
         "auto_count": 30,
         "auto_min": "10s",
-        "current": {
-          "text": "30s",
-          "value": "30s"
-        },
+        "current": {},
         "hide": 0,
         "label": "Interval",
         "name": "interval",
