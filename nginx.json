@@ -1629,15 +1629,14 @@
   ],
   "schemaVersion": 14,
   "style": "dark",
-  "tags": ["fcio"],
+  "tags": [
+    "fcio"
+  ],
   "templating": {
     "list": [
       {
         "allValue": null,
-        "current": {
-          "text": "",
-          "value": ""
-        },
+        "current": {},
         "datasource": "Prometheus",
         "hide": 0,
         "includeAll": false,

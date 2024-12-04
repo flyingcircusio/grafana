@@ -25,7 +25,9 @@
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": ["fcio"],
+      "tags": [
+        "fcio"
+      ],
       "title": "Switch",
       "type": "dashboards"
     }
@@ -836,13 +838,7 @@
     "list": [
       {
         "allValue": null,
-        "current": {
-          "tags": [],
-          "text": "All",
-          "value": [
-            "$__all"
-          ]
-        },
+        "current": {},
         "datasource": "Prometheus",
         "hide": 0,
         "includeAll": true,

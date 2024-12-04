@@ -1,0 +1,9 @@
+repos:
+- repo: local
+  hooks:
+    - id: sanitize-dashboards
+      name: sanitize-dashboards
+      entry: ./sanitize-dashboards.sh
+      language: script
+      files: ".*\\.json"
+      pass_filenames: true

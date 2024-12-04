@@ -14,7 +14,9 @@
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": ["fcio"],
+      "tags": [
+        "fcio"
+      ],
       "title": "Switch",
       "type": "dashboards"
     }
@@ -1442,10 +1444,7 @@
         "auto": true,
         "auto_count": 200,
         "auto_min": "1s",
-        "current": {
-          "text": "auto",
-          "value": "$__auto_interval"
-        },
+        "current": {},
         "datasource": "Prometheus",
         "hide": 0,
         "includeAll": false,
@@ -1502,10 +1501,7 @@
       {
         "allFormat": "glob",
         "allValue": null,
-        "current": {
-          "text": "",
-          "value": ""
-        },
+        "current": {},
         "datasource": "Prometheus",
         "hide": 0,
         "includeAll": false,

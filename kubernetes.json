@@ -36,10 +36,7 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -114,10 +111,7 @@
       },
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
+          "datasource": "Prometheus",
           "editorMode": "code",
           "expr": "count by (phase, phase_reason) (group by (pod_name, phase, phase_reason) (kubernetes_pod_container_state_code{resource_group=\"$RG\"}))",
           "hide": false,
@@ -130,10 +124,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -211,10 +202,7 @@
       },
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
+          "datasource": "Prometheus",
           "editorMode": "code",
           "expr": "(count by (pod_name) (kubernetes_pod_container_state_code{resource_group=\"$RG\", readiness=\"ready\"})) == bool (count by (pod_name) (kubernetes_pod_container_state_code{resource_group=\"$RG\"}))",
           "hide": false,
@@ -227,10 +215,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -305,10 +290,7 @@
       },
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
+          "datasource": "Prometheus",
           "editorMode": "code",
           "expr": "count by (node_name) (group by (node_name, pod_name) (kubernetes_pod_container_state_code{}))",
           "legendFormat": "{{node_name}}",
@@ -320,10 +302,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -398,10 +377,7 @@
       },
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
+          "datasource": "Prometheus",
           "editorMode": "code",
           "expr": "count by (node_name) (kubernetes_pod_container_state_code{})",
           "legendFormat": "{{node_name}}",
@@ -433,15 +409,8 @@
   "templating": {
     "list": [
       {
-        "current": {
-          "selected": false,
-          "text": "testmm",
-          "value": "testmm"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "PBFA97CFB590B2093"
-        },
+        "current": {},
+        "datasource": "Prometheus",
         "definition": "label_values(kubernetes_pod_container_state_code,resource_group)",
         "hide": 0,
         "includeAll": false,
