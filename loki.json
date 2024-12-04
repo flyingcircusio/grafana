@@ -22,10 +22,7 @@
   "links": [],
   "panels": [
     {
-      "datasource": {
-        "type": "loki",
-        "uid": "P8E80F9AEF21F6940"
-      },
+      "datasource": "Loki",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -106,10 +103,7 @@
       },
       "targets": [
         {
-          "datasource": {
-            "type": "loki",
-            "uid": "P8E80F9AEF21F6940"
-          },
+          "datasource": "Loki",
           "editorMode": "code",
           "expr": "count by(hostname, systemd_unit) (rate({resource_group=~\"$resource_group\", hostname=~\"$host\", systemd_unit=~\"$systemd_unit\"}   |~ \"$query\" | json [1m]))",
           "legendFormat": "",
@@ -121,10 +115,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "loki",
-        "uid": "P8E80F9AEF21F6940"
-      },
+      "datasource": "Loki",
       "gridPos": {
         "h": 31,
         "w": 24,
@@ -144,10 +135,7 @@
       },
       "targets": [
         {
-          "datasource": {
-            "type": "loki",
-            "uid": "P8E80F9AEF21F6940"
-          },
+          "datasource": "Loki",
           "editorMode": "code",
           "expr": "{resource_group=\"$resource_group\", hostname=~\"$host\", systemd_unit=~\"$systemd_unit\"}\n    |~ \"$query\"\n    | json  \n    | line_format \"{{alignLeft 10 .hostname}}\\t{{alignLeft 20 .systemd_unit}}\\t{{.MESSAGE}}\" \n    | keep systemd_unit, resource_group, hostname, _EXE, _COMM, _CMDLINE, SYSLOG_TIMESTAMP, MESSAGE",
           "queryType": "range",
@@ -164,10 +152,7 @@
     "list": [
       {
         "current": {},
-        "datasource": {
-          "type": "loki",
-          "uid": "P8E80F9AEF21F6940"
-        },
+        "datasource": "Loki",
         "definition": "",
         "hide": 0,
         "includeAll": false,
@@ -190,10 +175,7 @@
       {
         "allValue": "",
         "current": {},
-        "datasource": {
-          "type": "loki",
-          "uid": "P8E80F9AEF21F6940"
-        },
+        "datasource": "Loki",
         "definition": "",
         "hide": 0,
         "includeAll": true,
@@ -215,10 +197,7 @@
       },
       {
         "current": {},
-        "datasource": {
-          "type": "loki",
-          "uid": "P8E80F9AEF21F6940"
-        },
+        "datasource": "Loki",
         "definition": "",
         "hide": 0,
         "includeAll": true,
