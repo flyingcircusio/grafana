@@ -5,7 +5,7 @@
 #
 # If not provided with any files as arguments it defaults to all json files on the root level
 
-DASHBOARDS=${@:-*.json}
+DASHBOARDS=${@:-$(fd -e json)}
 
 set -eu pipefail
 
