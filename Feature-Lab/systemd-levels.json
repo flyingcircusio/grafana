@@ -1,0 +1,301 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 23,
+  "links": [],
+  "panels": [
+    {
+      "datasource": "Loki",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": "Loki",
+          "editorMode": "code",
+          "expr": "count by(hostname, systemd_unit) (rate({resource_group=~\"$resource_group\", hostname=~\"$host\", systemd_unit=~\"$systemd_unit\"} |~ `$query` | json | PRIORITY =~ `$Priority` [1m]))",
+          "legendFormat": "",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Count over time",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "Loki",
+      "gridPos": {
+        "h": 31,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 1,
+      "options": {
+        "dedupStrategy": "none",
+        "enableLogDetails": true,
+        "prettifyLogMessage": false,
+        "showCommonLabels": false,
+        "showLabels": false,
+        "showTime": true,
+        "sortOrder": "Descending",
+        "wrapLogMessage": false
+      },
+      "targets": [
+        {
+          "datasource": "Loki",
+          "editorMode": "code",
+          "expr": "{resource_group=\"$resource_group\", hostname=~\"$host\", systemd_unit=~\"$systemd_unit\"}\n    |~ \"$query\"\n    | json\n    | PRIORITY =~ `$Priority`\n    | line_format \"{{alignLeft 10 .hostname}}\\t{{alignLeft 20 .systemd_unit}}\\t{{.MESSAGE}}\" \n    | keep systemd_unit, resource_group, hostname, _EXE, _COMM, _CMDLINE, SYSLOG_TIMESTAMP, MESSAGE",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Logs",
+      "type": "logs"
+    }
+  ],
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {},
+        "datasource": "Loki",
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Resource Group",
+        "multi": true,
+        "name": "resource_group",
+        "options": [],
+        "query": {
+          "label": "resource_group",
+          "refId": "LokiVariableQueryEditor-VariableQuery",
+          "stream": "",
+          "type": 1
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 2,
+        "type": "query"
+      },
+      {
+        "allValue": "",
+        "current": {},
+        "datasource": "Loki",
+        "definition": "",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Host",
+        "multi": true,
+        "name": "host",
+        "options": [],
+        "query": {
+          "label": "hostname",
+          "refId": "LokiVariableQueryEditor-VariableQuery",
+          "stream": "{resource_group=~\"$resource_group\"}",
+          "type": 1
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 3,
+        "type": "query"
+      },
+      {
+        "current": {},
+        "datasource": "Loki",
+        "definition": "",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Systemd Unit",
+        "multi": true,
+        "name": "systemd_unit",
+        "options": [],
+        "query": {
+          "label": "systemd_unit",
+          "refId": "LokiVariableQueryEditor-VariableQuery",
+          "stream": "{resource_group=~\"$resource_group\", hostname=~\"$host\"}",
+          "type": 1
+        },
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {},
+        "description": "A regular expression that will be applied to the raw log line. This means it includes data from all fields.",
+        "hide": 0,
+        "label": "Full text search",
+        "name": "query",
+        "options": [],
+        "query": "",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "current": {},
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "Priority",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "emergency",
+            "value": "0"
+          },
+          {
+            "selected": false,
+            "text": "alert",
+            "value": "1"
+          },
+          {
+            "selected": false,
+            "text": "critical",
+            "value": "2"
+          },
+          {
+            "selected": false,
+            "text": "error",
+            "value": "3"
+          },
+          {
+            "selected": false,
+            "text": "warning",
+            "value": "4"
+          },
+          {
+            "selected": false,
+            "text": "notice",
+            "value": "5"
+          },
+          {
+            "selected": false,
+            "text": "info",
+            "value": "6"
+          },
+          {
+            "selected": false,
+            "text": "debug",
+            "value": "7"
+          }
+        ],
+        "query": "emergency : 0, alert : 1, critical : 2, error : 3, warning : 4, notice : 5, info : 6, debug : 7",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Basic Loki Logging with systemd Priority",
+  "uid": "cdz2nrndcrke8f",
+  "version": 3,
+  "weekStart": ""
+}
