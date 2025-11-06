@@ -681,11 +681,11 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(nginx_requests{host=\"$Host\"}[$Interval])",
+              "expr": "rate(nginx_requests{host=\"$Host\"}[$__interval])",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "Requests/s [$Interval]",
+              "legendFormat": "Requests/s [$__interval]",
               "metric": "nginx_accepts",
               "refId": "A",
               "step": 4
@@ -905,7 +905,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(varnish_s_req{host=\"$Host\", status=\"\"}[$Interval])",
+              "expr": "rate(varnish_s_req{host=\"$Host\", status=\"\"}[$__interval])",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
@@ -915,7 +915,7 @@
               "step": 10
             },
             {
-              "expr": "rate(varnish_backend_req{host=\"$Host\", status=\"\"}[$Interval])",
+              "expr": "rate(varnish_backend_req{host=\"$Host\", status=\"\"}[$__interval])",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
@@ -925,7 +925,7 @@
               "step": 10
             },
             {
-              "expr": "rate(varnish_fetch{host=\"$Host\"}[$Interval])",
+              "expr": "rate(varnish_fetch{host=\"$Host\"}[$__interval])",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "Backend {{status}}",
@@ -937,7 +937,7 @@
           "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Requests / s [$Interval]",
+          "title": "Requests / s [$__interval]",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -1124,7 +1124,7 @@
               "step": 20
             },
             {
-              "expr": "rate(varnish_n_expired{host=\"$Host\"}[$Interval])",
+              "expr": "rate(varnish_n_expired{host=\"$Host\"}[$__interval])",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "Expired objects",
@@ -1133,7 +1133,7 @@
               "step": 20
             },
             {
-              "expr": "rate(varnish_n_lru_nuked{host=\"$Host\"}[$Interval])",
+              "expr": "rate(varnish_n_lru_nuked{host=\"$Host\"}[$__interval])",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "Nuked objects",
@@ -1225,7 +1225,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(haproxy_backend_connections_total{host=\"$Host\", backend!~\".*-in$\"}[$Interval])",
+              "expr": "rate(haproxy_backend_connections_total{host=\"$Host\", backend!~\".*-in$\"}[$__interval])",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "{{ backend }}",
@@ -1234,7 +1234,7 @@
               "step": 10
             },
             {
-              "expr": "rate(haproxy_backend_connection_errors_total{host=\"$Host\",backend!~\".*-in$\"}[$Interval])",
+              "expr": "rate(haproxy_backend_connection_errors_total{host=\"$Host\",backend!~\".*-in$\"}[$__interval])",
               "hide": false,
               "intervalFactor": 2,
               "legendFormat": "{{ backend }} Error",
