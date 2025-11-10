@@ -1121,7 +1121,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(elasticsearch_indices_indexing_index_total{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$interval])",
+              "expr": "rate(elasticsearch_indices_indexing_index_total{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$__interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1209,7 +1209,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(elasticsearch_indices_indexing_delete_total{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$interval])",
+              "expr": "rate(elasticsearch_indices_indexing_delete_total{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$__interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1297,7 +1297,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(elasticsearch_indices_merges_total{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$interval])",
+              "expr": "rate(elasticsearch_indices_merges_total{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$__interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1397,7 +1397,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(elasticsearch_indices_search_query_time_seconds{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$interval])",
+              "expr": "rate(elasticsearch_indices_search_query_time_seconds{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$__interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1486,7 +1486,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(elasticsearch_indices_indexing_index_time_seconds_total{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$interval])",
+              "expr": "rate(elasticsearch_indices_indexing_index_time_seconds_total{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$__interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1574,7 +1574,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(elasticsearch_indices_merges_total_time_seconds_total{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$interval])",
+              "expr": "rate(elasticsearch_indices_merges_total_time_seconds_total{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$__interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1762,7 +1762,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(elasticsearch_indices_fielddata_evictions{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$interval])",
+              "expr": "rate(elasticsearch_indices_fielddata_evictions{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$__interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1938,7 +1938,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(elasticsearch_indices_query_cache_evictions{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$interval])",
+              "expr": "rate(elasticsearch_indices_query_cache_evictions{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$__interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -2126,7 +2126,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(elasticsearch_jvm_gc_collection_seconds_count{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$interval])",
+              "expr": "rate(elasticsearch_jvm_gc_collection_seconds_count{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$__interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -2216,7 +2216,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(elasticsearch_jvm_gc_collection_seconds_count{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$interval])",
+              "expr": "rate(elasticsearch_jvm_gc_collection_seconds_count{resource_group=\"$RG\", cluster=\"$cluster\",name=~\"$node\"}[$__interval])",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
