@@ -1,5 +1,9 @@
 # Grafana Dashboard Provisions
 
+## Vendored Dashboards
+
+This repository contains several third-party dashboards as vendored files. For attribution and licensing information, see [COPYING.md](./COPYING.md).
+
 ## How to export a new Dashboard for use in this repo:
 
 Export your dashboard to JSON by following these steps:
