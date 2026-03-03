@@ -905,7 +905,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(varnish_s_req{host=\"$Host\", status=\"\"}[$__interval])",
+              "expr": "rate(varnish_client_req{host=\"$Host\", status=\"\"}[$__interval])",
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
